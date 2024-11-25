@@ -1,0 +1,29 @@
+- parts
+    - material
+    - connector
+    - geometry
+- operations
+    - cut
+    - join
+    - bend
+    - CNC
+    - 3Dprint
+
+***DEFINITIONS***
+[parts]
+A digital copy of a physical object.
+The digital copy contains information of essential properties that are needed to understand its
+- behavior
+- connectivity to other parts
+- and visual representation
+- color
+- texture
+
+[operations]
+A simulation process of a physical process of fabrication.
+
+[the sculptor's tools]
+Modules that can manipulate the geometry of parts.
+
+[the painter's tools]
+Modules that can manipulate the colors and textures of the parts.

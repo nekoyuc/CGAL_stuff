@@ -1,0 +1,6 @@
+set(__QT_DEPLOY_TARGET_CGAL_Qt6_moc_and_resources_FILE /Users/nekoyuc/src/CGAL_stuff/cube/libCGAL_Qt6_moc_and_resources.a)
+set(__QT_DEPLOY_TARGET_CGAL_Qt6_moc_and_resources_TYPE STATIC_LIBRARY)
+set(__QT_DEPLOY_TARGET_cube_FILE /Users/nekoyuc/src/CGAL_stuff/cube/cube)
+set(__QT_DEPLOY_TARGET_cube_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_is_symmetrical_FILE /Users/nekoyuc/src/CGAL_stuff/cube/is_symmetrical)
+set(__QT_DEPLOY_TARGET_is_symmetrical_TYPE EXECUTABLE)
