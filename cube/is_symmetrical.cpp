@@ -27,20 +27,20 @@ method C:
 #include <sstream>
 #include <vector>
 #include <string>
+#include <map>
 
 
 class Point{
     public:
-        Point() = default;
         Point(float x, float y, float z){
             m_x = x; // an assignment, an operation. like a verb
             m_y = y;
             m_z = z;
         }
         ~Point(){}
-        float m_x = 0.0; // a declaration describes structure for the data. like a noun
-        float m_y = 0.0;
-        float m_z = 0.0;
+        float m_x; // a declaration describes structure for the data. like a noun
+        float m_y;
+        float m_z;
 };
 
 // A vector of what? A vector of point.
@@ -101,27 +101,39 @@ class Plane{ //
 
 class Cube{
     public:
-        Cube(Point& origin, float& x, float& y, float& z) : m_origin(origin) {
-            m_origin = origin;
-            m_x = x;
-            m_y = y;
-            m_z = z;
-        }
+        Cube(Point& origin) : m_origin(origin), taken(false), paired(false) {}
         ~Cube(){}
         Point m_origin;
-        float m_x;
-        float m_y;
-        float m_z;
+        bool taken;
+        bool paired;
 };
 
-//std::vector<std::vector<std::vector<int> > > create3DArray(const Mesh& mesh) {
-//    int x_size = static_cast<int>(mesh.m_boundingBox[1].m_x - mesh.m_boundingBox[0].m_x) + 1;
- //   int y_size = static_cast<int>(mesh.m_boundingBox[1].m_y - mesh.m_boundingBox[0].m_y) + 1;
- //   int z_size = static_cast<int>(mesh.m_boundingBox[1].m_z - mesh.m_boundingBox[0].m_z) + 1;
+std::map<std::string, Cube> createCubeMap(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
+    std::map<std::string, Cube> cubeMap;
+    int numX = static_cast<int>(std::floor((max.m_x - min.m_x) / dx));
+    int numY = static_cast<int>(std::floor((max.m_y - min.m_y) / dy));
+    int numZ = static_cast<int>(std::floor((max.m_z - min.m_z) / dz));
 
-   // std::vector<std::vector<std::vector<int>>> array3D(x_size, std::vector<std::vector<int>>(y_size, std::vector<int>(z_size, 0)));
-    //return array3D;
-//}
+    for (int i = 0; i < numX; i++) {
+        for (int j = 0; j < numY; j++) {
+            for (int k = 0; k < numZ; k++) {
+                Point origin(min.m_x + i * dx, min.m_y + j * dy, min.m_z + k * dz);
+                Cube cube(origin);
+                //cubeMap[std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k)] = cube;
+                cubeMap.emplace(std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k), cube);
+            }
+        }
+    }           
+    return cubeMap;
+}
+
+std::vector<int> pointToIndex(const Point& p, const Point& min, const float& dx, const float& dy, const float& dz) {
+    std::vector<int> index(3);
+    index[0] = static_cast<int>(std::floor((p.m_x - min.m_x) / dx));
+    index[1] = static_cast<int>(std::floor((p.m_y - min.m_y) / dy));
+    index[2] = static_cast<int>(std::floor((p.m_z - min.m_z) / dz));
+    return index;
+}
 
 void splitMesh(const Plane& plane, const Mesh& inMesh, Mesh& outMesh1, Mesh& outMesh2) {
     for (int i = 0; i < inMesh.m_vertices.size(); i++) {
@@ -211,12 +223,16 @@ Point mirroredPoint(const Point& p, const Plane& plane) {
     float normal_length = sqrt(plane.m_normal.m_x * plane.m_normal.m_x +
                                 plane.m_normal.m_y * plane.m_normal.m_y +
                                 plane.m_normal.m_z * plane.m_normal.m_z);
-    float d = ((p.m_x - plane.m_points[0].m_x) * plane.m_normal.m_x +
-              (p.m_y - plane.m_points[0].m_y) * plane.m_normal.m_y +
-              (p.m_z - plane.m_points[0].m_z) * plane.m_normal.m_z) / normal_length;
-    Point mirrored_p(p.m_x - 2 * d * plane.m_normal.m_x,
-                     p.m_y - 2 * d * plane.m_normal.m_y,
-                     p.m_z - 2 * d * plane.m_normal.m_z);
+    
+    Point normalized_normal(plane.m_normal.m_x / normal_length,
+                            plane.m_normal.m_y / normal_length,
+                            plane.m_normal.m_z / normal_length);
+    float d = (p.m_x - plane.m_points[0].m_x) * normalized_normal.m_x +
+              (p.m_y - plane.m_points[0].m_y) * normalized_normal.m_y +
+              (p.m_z - plane.m_points[0].m_z) * normalized_normal.m_z;
+    Point mirrored_p(p.m_x - 2 * d * normalized_normal.m_x,
+                     p.m_y - 2 * d * normalized_normal.m_y,
+                     p.m_z - 2 * d * normalized_normal.m_z);
     return mirrored_p;
 }
 
@@ -228,36 +244,70 @@ int main() {
     std::cout <<"Number of vertices in mesh: " << mesh.m_vertices.size() << std::endl;
 
     calculateBoundingBox(mesh);
-    std::cout << "Bounding box: " << mesh.m_boundingBox[0].m_x << ", " << mesh.m_boundingBox[0].m_y << ", " << mesh.m_boundingBox[0].m_z << std::endl;
+    std::cout << "\nBounding box: " << mesh.m_boundingBox[0].m_x << ", " << mesh.m_boundingBox[0].m_y << ", " << mesh.m_boundingBox[0].m_z << std::endl;
+    std::cout << "Bounding box: " << mesh.m_boundingBox[1].m_x << ", " << mesh.m_boundingBox[1].m_y << ", " << mesh.m_boundingBox[1].m_z << std::endl;
 
     Point center = centroid(mesh);
-    std::cout << "Center of mesh: " << center.m_x << ", " << center.m_y << ", " << center.m_z << std::endl;
+    std::cout << "\nCenter of mesh: " << center.m_x << ", " << center.m_y << ", " << center.m_z << std::endl;
     
     Point p1(0, 0, 0);
     Point p2(2, 0, 0);
     Point p3(0, 2, 0);
     Plane plane(p1, p2, p3);
-    std::cout << "Normal of plane: " << plane.m_normal.m_x << ", " << plane.m_normal.m_y << ", " << plane.m_normal.m_z << std::endl;
+    std::cout << "\nNormal of plane: " << plane.m_normal.m_x << ", " << plane.m_normal.m_y << ", " << plane.m_normal.m_z << std::endl;
+
+    Point boundingBox_mirrored1 = mirroredPoint(mesh.m_boundingBox[0], plane);
+    Point boundingBox_mirrored2 = mirroredPoint(mesh.m_boundingBox[1], plane);
+
+    Point fullBoundingBox1(std::min(std::min(mesh.m_boundingBox[0].m_x, boundingBox_mirrored1.m_x), boundingBox_mirrored2.m_x),
+                           std::min(std::min(mesh.m_boundingBox[0].m_y, boundingBox_mirrored1.m_y), boundingBox_mirrored2.m_y),
+                           std::min(std::min(mesh.m_boundingBox[0].m_z, boundingBox_mirrored1.m_z), boundingBox_mirrored2.m_z));
+    Point fullBoundingBox2(std::max(std::max(mesh.m_boundingBox[1].m_x, boundingBox_mirrored1.m_x), boundingBox_mirrored2.m_x),
+                            std::max(std::max(mesh.m_boundingBox[1].m_y, boundingBox_mirrored1.m_y), boundingBox_mirrored2.m_y),
+                            std::max(std::max(mesh.m_boundingBox[1].m_z, boundingBox_mirrored1.m_z), boundingBox_mirrored2.m_z)); 
+    
+    std::cout << "\nFull bounding box: " << fullBoundingBox1.m_x << ", " << fullBoundingBox1.m_y << ", " << fullBoundingBox1.m_z << std::endl;
+    std::cout << "Full bounding box: " << fullBoundingBox2.m_x << ", " << fullBoundingBox2.m_y << ", " << fullBoundingBox2.m_z << std::endl;
+
+    float dx = 0.1;
+    float dy = 0.1;
+    float dz = 0.1;
+
+    std::map<std::string, Cube> cubeMap = createCubeMap(fullBoundingBox1, fullBoundingBox2, dx, dy, dz);
+    std::cout << "\nNumber of cubes: " << cubeMap.size() << std::endl;
 
     Mesh outMesh1(100000);
     Mesh outMesh2(100000);
     splitMesh(plane, mesh, outMesh1, outMesh2);
-    std::cout << "Number of vertices in outMesh1: " << outMesh1.m_vertices.size() << std::endl;
+    std::cout << "\nNumber of vertices in outMesh1: " << outMesh1.m_vertices.size() << std::endl;
     std::cout << "Number of vertices in outMesh2: " << outMesh2.m_vertices.size() << std::endl;
+    
 
     Point center1 = centroid(outMesh1);
     Point center2 = centroid(outMesh2);
-    std::cout << "Center of outMesh1: " << center1.m_x << ", " << center1.m_y << ", " << center1.m_z << std::endl;
+    std::cout << "\nCenter of outMesh1: " << center1.m_x << ", " << center1.m_y << ", " << center1.m_z << std::endl;
     std::cout << "Center of outMesh2: " << center2.m_x << ", " << center2.m_y << ", " << center2.m_z << std::endl;
 
-    
-    std::vector<Point> grid;
-    // createSymmetricalGrid(plane, mesh, grid, 10);
-   // std::cout << "Number of points in grid: " << grid.size() << std::endl;
-
-    //std::vector<std::vector<std::vector<int>>> array3D = create3DArray(mesh);
-    //std::cout << "Size of 3D array: " << array3D.size() << ", " << array3D[0].size() << ", " << array3D[0][0].size() << std::endl;
-
+    /*
+    for (int i = 0; i < outMesh1.m_vertices.size(); i++){
+        std::vector<int> index = pointToIndex(outMesh1.m_vertices[i], mesh.m_boundingBox[0], dx, dy, dz);
+        std::cout << "Index: " << index[0] << ", " << index[1] << ", " << index[2] << std::endl;
+        std::cout << "Cube status: " << cubeMap[std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2])].taken << std::endl;
+        
+        if (cubeMap[std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2])].paired == true) {
+            continue;
+        } else {
+            cubeMap[std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2])].taken = true;
+            Point mirrored_p = mirroredPoint(outMesh1.m_vertices[i], plane);
+            std::vector<int> index_mirrored = pointToIndex(mirrored_p, mesh.m_boundingBox[0], dx, dy, dz);
+            if (cubeMap[std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2])].taken == true) {
+                cubeMap[std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2])].paired = true;
+                cubeMap[std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2])].paired = true;
+            }
+        }
+        
+    }
+    */
     return 0;
 }
 

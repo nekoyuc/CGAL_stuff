@@ -749,6 +749,7 @@
 	"MOC_PREDEFS_CMD" : 
 	[
 		"/Library/Developer/CommandLineTools/usr/bin/c++",
+		"-std=gnu++17",
 		"-dM",
 		"-E",
 		"-c",
