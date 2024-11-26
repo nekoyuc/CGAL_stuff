@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/is_symmetrical.dir/is_symmetrical.cpp.o"
   "CMakeFiles/is_symmetrical.dir/is_symmetrical.cpp.o.d"
+  "CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o"
+  "CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o.d"
   "is_symmetrical"
   "is_symmetrical.pdb"
 )

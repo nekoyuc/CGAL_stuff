@@ -16,11 +16,13 @@ method B:
 4. the smaller the volume, the more symmetrical the mesh is
 
 method C:
-1. subdivide both sides into 64 cubes
-2. calculate the centroids of the points in each cube
+1. subdivide both sides into 64 Cells
+2. calculate the centroids of the points in each cell
 3. map the distances between the centroids of their counterparts on the other side
 4. add up the distances
 */
+
+#define GL_SILENCE_DEPRECATION
 
 #include <iostream>
 #include <fstream>
@@ -28,6 +30,10 @@ method C:
 #include <vector>
 #include <string>
 #include <map>
+#include <GLUT/glut.h>
+#include <OpenGL/gl.h>
+
+#include "sdl_test.h"
 
 
 class Point{
@@ -99,17 +105,17 @@ class Plane{ //
         }
 };
 
-class Cube{
+class Cell{
     public:
-        Cube(Point& origin) : m_origin(origin), taken(false), paired(false) {}
-        ~Cube(){}
+        Cell(Point& origin) : m_origin(origin), taken(false), paired(false) {}
+        ~Cell(){}
         Point m_origin;
         bool taken;
         bool paired;
 };
 
-std::map<std::string, Cube> createCubeMap(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
-    std::map<std::string, Cube> cubeMap;
+std::map<std::string, Cell> createCellMap(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
+    std::map<std::string, Cell> cellMap;
     int numX = static_cast<int>(std::ceil((max.m_x - min.m_x) / dx));
     int numY = static_cast<int>(std::ceil((max.m_y - min.m_y) / dy));
     int numZ = static_cast<int>(std::ceil((max.m_z - min.m_z) / dz));
@@ -118,20 +124,20 @@ std::map<std::string, Cube> createCubeMap(const Point& min, const Point& max, co
     std::cout << "Increment in y: " << dy << std::endl;
     std::cout << "Increment in z: " << dz << std::endl;
 
-    std::cout << "\nNumber of cubes in x: " << numX << std::endl;
-    std::cout << "Number of cubes in y: " << numY << std::endl;
-    std::cout << "Number of cubes in z: " << numZ << std::endl;
+    std::cout << "\nNumber of cells in x: " << numX << std::endl;
+    std::cout << "Number of cells in y: " << numY << std::endl;
+    std::cout << "Number of cells in z: " << numZ << std::endl;
 
     for (int i = 0; i < numX; i++) {
         for (int j = 0; j < numY; j++) {
             for (int k = 0; k < numZ; k++) {
                 Point origin(min.m_x + i * dx, min.m_y + j * dy, min.m_z + k * dz);
-                Cube cube(origin);
-                cubeMap.emplace(std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k), cube);
+                Cell cell(origin);
+                cellMap.emplace(std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k), cell);
             }
         }
     }           
-    return cubeMap;
+    return cellMap;
 }
 
 
@@ -175,7 +181,7 @@ void loadOBJ(const std::string& filename, Mesh& mesh) {
             iss >> x >> y >> z;
             Point p(x, y, z);
             mesh.addPoint(p);
-        }
+        } 
     }
     file.close();
 }
@@ -280,8 +286,8 @@ int main() {
     float dy = 0.1;
     float dz = 0.1;
 
-    std::map<std::string, Cube> cubeMap = createCubeMap(fullBoundingBox1, fullBoundingBox2, dx, dy, dz);
-    std::cout << "\nNumber of cubes: " << cubeMap.size() << std::endl;
+    std::map<std::string, Cell> cellMap = createCellMap(fullBoundingBox1, fullBoundingBox2, dx, dy, dz);
+    std::cout << "\nNumber of cells: " << cellMap.size() << std::endl;
 
     Mesh outMesh1(100000);
     Mesh outMesh2(100000);
@@ -291,63 +297,63 @@ int main() {
         
     for (int i = 0; i < outMesh1.m_vertices.size(); i++){
         std::vector<int> index = pointToIndex(outMesh1.m_vertices[i], fullBoundingBox1, dx, dy, dz);
-        auto it = cubeMap.find(std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2]));
-        if (it != cubeMap.end()) {
+        auto it = cellMap.find(std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2]));
+        if (it != cellMap.end()) {
             if (it->second.paired == true) {
                 continue;
             } else {
                 it->second.taken = true;
                 Point mirrored_p = mirroredPoint(outMesh1.m_vertices[i], plane);
                 std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz);
-                auto it_mirrored = cubeMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
-                if (it_mirrored != cubeMap.end()) {
+                auto it_mirrored = cellMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
+                if (it_mirrored != cellMap.end()) {
                     if (it_mirrored->second.taken == true) {
                         it->second.paired = true;
                         it_mirrored->second.paired = true;
                     }
                 } else {
-                    std::cout << "Mirrored cube not found." << std::endl;
+                    std::cout << "Mirrored cell not found." << std::endl;
                 }
             }
         } else {
             std::cout << "\nMesh 1" << std::endl;
             std::cout << "Point: " << outMesh1.m_vertices[i].m_x << ", " << outMesh1.m_vertices[i].m_y << ", " << outMesh1.m_vertices[i].m_z << std::endl;
             std::cout << "Index: " << index[0] << ", " << index[1] << ", " << index[2] << std::endl;
-            std::cout << "Cube not found." << std::endl;
+            std::cout << "Cell not found." << std::endl;
         }
     }
 
     for (int i = 0; i < outMesh2.m_vertices.size(); i++){
         std::vector<int> index = pointToIndex(outMesh2.m_vertices[i], fullBoundingBox1, dx, dy, dz);
-        auto it = cubeMap.find(std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2]));
-        if (it != cubeMap.end()) {
+        auto it = cellMap.find(std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2]));
+        if (it != cellMap.end()) {
             if (it->second.paired == true) {
                 continue;
             } else {
                 it->second.taken = true;
                 Point mirrored_p = mirroredPoint(outMesh2.m_vertices[i], plane);
                 std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz);
-                auto it_mirrored = cubeMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
-                if (it_mirrored != cubeMap.end()) {
+                auto it_mirrored = cellMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
+                if (it_mirrored != cellMap.end()) {
                     if (it_mirrored->second.taken == true) {
                         it->second.paired = true;
                         it_mirrored->second.paired = true;
                     }
                 } else {
-                    std::cout << "Mirrored cube not found." << std::endl;
+                    std::cout << "Mirrored cell not found." << std::endl;
                 }
             }
         } else {
             std::cout << "\nMesh 2" << std::endl;
             std::cout << "Point: " << outMesh2.m_vertices[i].m_x << ", " << outMesh2.m_vertices[i].m_y << ", " << outMesh2.m_vertices[i].m_z << std::endl;
             std::cout << "Index: " << index[0] << ", " << index[1] << ", " << index[2] << std::endl;
-            std::cout << "Cube not found." << std::endl;
+            std::cout << "Cell not found." << std::endl;
         }
     }
 
     int numTaken = 0;
     int numPaired = 0;
-    for (const auto& pair : cubeMap) {
+    for (const auto& pair : cellMap) {
         if (pair.second.taken == true) {
             numTaken++;
         }
@@ -358,12 +364,25 @@ int main() {
 
     auto end = std::chrono::high_resolution_clock::now();
 
-    std::cout << "\nNumber of cubes taken: " << numTaken << std::endl;
-    std::cout << "Number of cubes paired: " << numPaired << std::endl;
+    std::cout << "\nNumber of cells taken: " << numTaken << std::endl;
+    std::cout << "Number of cells paired: " << numPaired << std::endl;
 
     std::chrono::duration<double> elapsed = end - start;
     std::cout << "\nElapsed time: " << elapsed.count() << " s" << std::endl;
+
+
+    // Visualization demo
+    std::vector<Vertex> vertices = {
+        {{0.0f,  0.5f, 1.0f}, {1.0f, 0.0f, 0.0f}}, // Top vertex (red)
+        {{0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}}, // Bottom right vertex (green)
+        {{-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}}  // Bottom left vertex (blue)
+    };
+
+    std::vector<GLuint> indices = {0, 1, 2}; // Triangle: Vertex 0, Vertex 1, Vertex 2
+    visualize_mesh(vertices, indices);
+    
     return 0;
+
 }
 
 

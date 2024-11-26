@@ -95,6 +95,9 @@ cube_EXTERNAL_OBJECTS =
 
 cube: CMakeFiles/cube.dir/cube.cpp.o
 cube: CMakeFiles/cube.dir/build.make
+cube: /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/GLUT.framework
+cube: /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework
+cube: /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/Cocoa.framework
 cube: libCGAL_Qt6_moc_and_resources.a
 cube: /opt/homebrew/lib/libgmpxx.dylib
 cube: /opt/homebrew/lib/libmpfr.dylib

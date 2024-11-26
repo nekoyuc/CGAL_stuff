@@ -336,6 +336,30 @@ qrc_Triangulation_2.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CGAL_Qt6_moc_and_resources.dir/build.make CMakeFiles/CGAL_Qt6_moc_and_resources.dir/qrc_Triangulation_2.cpp.s
 .PHONY : qrc_Triangulation_2.cpp.s
 
+sdl_test.o: sdl_test.cpp.o
+.PHONY : sdl_test.o
+
+# target to build an object file
+sdl_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o
+.PHONY : sdl_test.cpp.o
+
+sdl_test.i: sdl_test.cpp.i
+.PHONY : sdl_test.i
+
+# target to preprocess a source file
+sdl_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/sdl_test.cpp.i
+.PHONY : sdl_test.cpp.i
+
+sdl_test.s: sdl_test.cpp.s
+.PHONY : sdl_test.s
+
+# target to generate assembly for a file
+sdl_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/sdl_test.cpp.s
+.PHONY : sdl_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -369,6 +393,9 @@ help:
 	@echo "... qrc_Triangulation_2.o"
 	@echo "... qrc_Triangulation_2.i"
 	@echo "... qrc_Triangulation_2.s"
+	@echo "... sdl_test.o"
+	@echo "... sdl_test.i"
+	@echo "... sdl_test.s"
 .PHONY : help
 
 

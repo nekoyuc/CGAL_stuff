@@ -2129,6 +2129,8 @@ CGAL_Qt6_moc_and_resources_autogen/timestamp: \
 	/opt/homebrew/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-release.cmake \
 	/opt/homebrew/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake \
 	/opt/homebrew/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake \
+	/opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake \
+	/opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake \
 	/opt/homebrew/lib/cmake/boost_headers-1.86.0/boost_headers-config-version.cmake \
 	/opt/homebrew/lib/cmake/boost_headers-1.86.0/boost_headers-config.cmake \
 	/opt/homebrew/share/cmake/Modules/CMakeCCompiler.cmake.in \
@@ -2226,10 +2228,13 @@ CGAL_Qt6_moc_and_resources_autogen/timestamp: \
 	/opt/homebrew/share/cmake/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake \
 	/opt/homebrew/share/cmake/Modules/Compiler/zOS-C-DetermineCompiler.cmake \
 	/opt/homebrew/share/cmake/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake \
+	/opt/homebrew/share/cmake/Modules/FeatureSummary.cmake \
 	/opt/homebrew/share/cmake/Modules/FindBoost.cmake \
+	/opt/homebrew/share/cmake/Modules/FindGLUT.cmake \
 	/opt/homebrew/share/cmake/Modules/FindOpenGL.cmake \
 	/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake \
 	/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake \
+	/opt/homebrew/share/cmake/Modules/FindPkgConfig.cmake \
 	/opt/homebrew/share/cmake/Modules/FindThreads.cmake \
 	/opt/homebrew/share/cmake/Modules/FindVulkan.cmake \
 	/opt/homebrew/share/cmake/Modules/GNUInstallDirs.cmake \
@@ -2257,4 +2262,5 @@ CGAL_Qt6_moc_and_resources_autogen/timestamp: \
 	/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake \
 	/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake \
 	/opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake \
+	/opt/homebrew/share/cmake/Modules/SelectLibraryConfigurations.cmake \
 	/opt/homebrew/bin/cmake

@@ -617,7 +617,20 @@
 		"/Users/nekoyuc/src/CGAL_stuff/cube/icons/Input.qrc",
 		"/Users/nekoyuc/src/CGAL_stuff/cube/icons/File.qrc",
 		"/Users/nekoyuc/src/CGAL_stuff/cube/icons/Triangulation_2.qrc",
-		"/opt/homebrew/lib/cmake/CGAL/CGAL_setup_target_dependencies.cmake"
+		"/opt/homebrew/lib/cmake/CGAL/CGAL_setup_target_dependencies.cmake",
+		"/opt/homebrew/share/cmake/Modules/FindOpenGL.cmake",
+		"/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
+		"/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake",
+		"/opt/homebrew/share/cmake/Modules/FindGLUT.cmake",
+		"/opt/homebrew/share/cmake/Modules/SelectLibraryConfigurations.cmake",
+		"/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
+		"/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake",
+		"/opt/homebrew/share/cmake/Modules/FindPkgConfig.cmake",
+		"/opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake",
+		"/opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake",
+		"/opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake",
+		"/opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake",
+		"/opt/homebrew/share/cmake/Modules/FeatureSummary.cmake"
 	],
 	"CMAKE_SOURCE_DIR" : "/Users/nekoyuc/src/CGAL_stuff/cube",
 	"CROSS_CONFIG" : false,
@@ -716,6 +729,9 @@
 	"MOC_INCLUDES" : 
 	[
 		"/Users/nekoyuc/src/CGAL_stuff/cube",
+		"/Users/nekoyuc/src/CGAL_stuff/cube/is_symmetrical",
+		"/opt/homebrew/Cellar/sdl2/2.30.9/include",
+		"/opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2",
 		"/opt/homebrew/include",
 		"/opt/homebrew/lib/QtWidgets.framework/Headers",
 		"/opt/homebrew/lib/QtWidgets.framework",

@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/nekoyuc/src/CGAL_stuff/cube/is_symmetrical.cpp" "CMakeFiles/is_symmetrical.dir/is_symmetrical.cpp.o" "gcc" "CMakeFiles/is_symmetrical.dir/is_symmetrical.cpp.o.d"
+  "/Users/nekoyuc/src/CGAL_stuff/cube/sdl_test.cpp" "CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o" "gcc" "CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
