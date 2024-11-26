@@ -110,22 +110,30 @@ class Cube{
 
 std::map<std::string, Cube> createCubeMap(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
     std::map<std::string, Cube> cubeMap;
-    int numX = static_cast<int>(std::floor((max.m_x - min.m_x) / dx));
-    int numY = static_cast<int>(std::floor((max.m_y - min.m_y) / dy));
-    int numZ = static_cast<int>(std::floor((max.m_z - min.m_z) / dz));
+    int numX = static_cast<int>(std::ceil((max.m_x - min.m_x) / dx));
+    int numY = static_cast<int>(std::ceil((max.m_y - min.m_y) / dy));
+    int numZ = static_cast<int>(std::ceil((max.m_z - min.m_z) / dz));
+
+    std::cout << "\nIncrement in x: " << dx << std::endl;
+    std::cout << "Increment in y: " << dy << std::endl;
+    std::cout << "Increment in z: " << dz << std::endl;
+
+    std::cout << "\nNumber of cubes in x: " << numX << std::endl;
+    std::cout << "Number of cubes in y: " << numY << std::endl;
+    std::cout << "Number of cubes in z: " << numZ << std::endl;
 
     for (int i = 0; i < numX; i++) {
         for (int j = 0; j < numY; j++) {
             for (int k = 0; k < numZ; k++) {
                 Point origin(min.m_x + i * dx, min.m_y + j * dy, min.m_z + k * dz);
                 Cube cube(origin);
-                //cubeMap[std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k)] = cube;
                 cubeMap.emplace(std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k), cube);
             }
         }
     }           
     return cubeMap;
 }
+
 
 std::vector<int> pointToIndex(const Point& p, const Point& min, const float& dx, const float& dy, const float& dz) {
     std::vector<int> index(3);
@@ -246,10 +254,9 @@ int main() {
     calculateBoundingBox(mesh);
     std::cout << "\nBounding box: " << mesh.m_boundingBox[0].m_x << ", " << mesh.m_boundingBox[0].m_y << ", " << mesh.m_boundingBox[0].m_z << std::endl;
     std::cout << "Bounding box: " << mesh.m_boundingBox[1].m_x << ", " << mesh.m_boundingBox[1].m_y << ", " << mesh.m_boundingBox[1].m_z << std::endl;
-
-    Point center = centroid(mesh);
-    std::cout << "\nCenter of mesh: " << center.m_x << ", " << center.m_y << ", " << center.m_z << std::endl;
     
+    auto start = std::chrono::high_resolution_clock::now();
+
     Point p1(0, 0, 0);
     Point p2(2, 0, 0);
     Point p3(0, 2, 0);
@@ -281,33 +288,81 @@ int main() {
     splitMesh(plane, mesh, outMesh1, outMesh2);
     std::cout << "\nNumber of vertices in outMesh1: " << outMesh1.m_vertices.size() << std::endl;
     std::cout << "Number of vertices in outMesh2: " << outMesh2.m_vertices.size() << std::endl;
-    
-
-    Point center1 = centroid(outMesh1);
-    Point center2 = centroid(outMesh2);
-    std::cout << "\nCenter of outMesh1: " << center1.m_x << ", " << center1.m_y << ", " << center1.m_z << std::endl;
-    std::cout << "Center of outMesh2: " << center2.m_x << ", " << center2.m_y << ", " << center2.m_z << std::endl;
-
-    /*
+        
     for (int i = 0; i < outMesh1.m_vertices.size(); i++){
-        std::vector<int> index = pointToIndex(outMesh1.m_vertices[i], mesh.m_boundingBox[0], dx, dy, dz);
-        std::cout << "Index: " << index[0] << ", " << index[1] << ", " << index[2] << std::endl;
-        std::cout << "Cube status: " << cubeMap[std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2])].taken << std::endl;
-        
-        if (cubeMap[std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2])].paired == true) {
-            continue;
-        } else {
-            cubeMap[std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2])].taken = true;
-            Point mirrored_p = mirroredPoint(outMesh1.m_vertices[i], plane);
-            std::vector<int> index_mirrored = pointToIndex(mirrored_p, mesh.m_boundingBox[0], dx, dy, dz);
-            if (cubeMap[std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2])].taken == true) {
-                cubeMap[std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2])].paired = true;
-                cubeMap[std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2])].paired = true;
+        std::vector<int> index = pointToIndex(outMesh1.m_vertices[i], fullBoundingBox1, dx, dy, dz);
+        auto it = cubeMap.find(std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2]));
+        if (it != cubeMap.end()) {
+            if (it->second.paired == true) {
+                continue;
+            } else {
+                it->second.taken = true;
+                Point mirrored_p = mirroredPoint(outMesh1.m_vertices[i], plane);
+                std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz);
+                auto it_mirrored = cubeMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
+                if (it_mirrored != cubeMap.end()) {
+                    if (it_mirrored->second.taken == true) {
+                        it->second.paired = true;
+                        it_mirrored->second.paired = true;
+                    }
+                } else {
+                    std::cout << "Mirrored cube not found." << std::endl;
+                }
             }
+        } else {
+            std::cout << "\nMesh 1" << std::endl;
+            std::cout << "Point: " << outMesh1.m_vertices[i].m_x << ", " << outMesh1.m_vertices[i].m_y << ", " << outMesh1.m_vertices[i].m_z << std::endl;
+            std::cout << "Index: " << index[0] << ", " << index[1] << ", " << index[2] << std::endl;
+            std::cout << "Cube not found." << std::endl;
         }
-        
     }
-    */
+
+    for (int i = 0; i < outMesh2.m_vertices.size(); i++){
+        std::vector<int> index = pointToIndex(outMesh2.m_vertices[i], fullBoundingBox1, dx, dy, dz);
+        auto it = cubeMap.find(std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2]));
+        if (it != cubeMap.end()) {
+            if (it->second.paired == true) {
+                continue;
+            } else {
+                it->second.taken = true;
+                Point mirrored_p = mirroredPoint(outMesh2.m_vertices[i], plane);
+                std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz);
+                auto it_mirrored = cubeMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
+                if (it_mirrored != cubeMap.end()) {
+                    if (it_mirrored->second.taken == true) {
+                        it->second.paired = true;
+                        it_mirrored->second.paired = true;
+                    }
+                } else {
+                    std::cout << "Mirrored cube not found." << std::endl;
+                }
+            }
+        } else {
+            std::cout << "\nMesh 2" << std::endl;
+            std::cout << "Point: " << outMesh2.m_vertices[i].m_x << ", " << outMesh2.m_vertices[i].m_y << ", " << outMesh2.m_vertices[i].m_z << std::endl;
+            std::cout << "Index: " << index[0] << ", " << index[1] << ", " << index[2] << std::endl;
+            std::cout << "Cube not found." << std::endl;
+        }
+    }
+
+    int numTaken = 0;
+    int numPaired = 0;
+    for (const auto& pair : cubeMap) {
+        if (pair.second.taken == true) {
+            numTaken++;
+        }
+        if (pair.second.paired == true) {
+            numPaired++;
+        }
+    }
+
+    auto end = std::chrono::high_resolution_clock::now();
+
+    std::cout << "\nNumber of cubes taken: " << numTaken << std::endl;
+    std::cout << "Number of cubes paired: " << numPaired << std::endl;
+
+    std::chrono::duration<double> elapsed = end - start;
+    std::cout << "\nElapsed time: " << elapsed.count() << " s" << std::endl;
     return 0;
 }
 
