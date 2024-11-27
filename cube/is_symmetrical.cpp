@@ -60,6 +60,7 @@ class Mesh{
     public:
         Mesh(int reserveSize) { //constructor
             m_vertices.reserve(reserveSize);
+            //m_faces.reserve(reserveSize);
             m_left_v.reserve(reserveSize);
             m_right_v.reserve(reserveSize);
             m_boundingBox.push_back(Point(0,0,0));
@@ -104,42 +105,6 @@ class Plane{ //
             normal.m_z = u1 * v2 - u2 * v1;
         }
 };
-
-class Cell{
-    public:
-        Cell(Point& origin) : m_origin(origin), taken(false), paired(false) {}
-        ~Cell(){}
-        Point m_origin;
-        bool taken;
-        bool paired;
-};
-
-std::map<std::string, Cell> createCellMap(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
-    std::map<std::string, Cell> cellMap;
-    int numX = static_cast<int>(std::ceil((max.m_x - min.m_x) / dx));
-    int numY = static_cast<int>(std::ceil((max.m_y - min.m_y) / dy));
-    int numZ = static_cast<int>(std::ceil((max.m_z - min.m_z) / dz));
-
-    std::cout << "\nIncrement in x: " << dx << std::endl;
-    std::cout << "Increment in y: " << dy << std::endl;
-    std::cout << "Increment in z: " << dz << std::endl;
-
-    std::cout << "\nNumber of cells in x: " << numX << std::endl;
-    std::cout << "Number of cells in y: " << numY << std::endl;
-    std::cout << "Number of cells in z: " << numZ << std::endl;
-
-    for (int i = 0; i < numX; i++) {
-        for (int j = 0; j < numY; j++) {
-            for (int k = 0; k < numZ; k++) {
-                Point origin(min.m_x + i * dx, min.m_y + j * dy, min.m_z + k * dz);
-                Cell cell(origin);
-                cellMap.emplace(std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k), cell);
-            }
-        }
-    }           
-    return cellMap;
-}
-
 
 std::vector<int> pointToIndex(const Point& p, const Point& min, const float& dx, const float& dy, const float& dz) {
     std::vector<int> index(3);
@@ -251,6 +216,40 @@ Point mirroredPoint(const Point& p, const Plane& plane) {
 }
 
 
+class Cell{
+    public:
+        Cell() : taken(false), paired(false) {}
+        ~Cell(){}
+        bool taken;
+        bool paired;
+};
+
+std::map<std::string, Cell> createCellMap(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
+    std::map<std::string, Cell> cellMap;
+    int numX = static_cast<int>(std::ceil((max.m_x - min.m_x) / dx));
+    int numY = static_cast<int>(std::ceil((max.m_y - min.m_y) / dy));
+    int numZ = static_cast<int>(std::ceil((max.m_z - min.m_z) / dz));
+
+    std::cout << "\nIncrement in x: " << dx << std::endl;
+    std::cout << "Increment in y: " << dy << std::endl;
+    std::cout << "Increment in z: " << dz << std::endl;
+
+    std::cout << "\nNumber of cells in x: " << numX << std::endl;
+    std::cout << "Number of cells in y: " << numY << std::endl;
+    std::cout << "Number of cells in z: " << numZ << std::endl;
+
+    for (int i = 0; i < numX; i++) {
+        for (int j = 0; j < numY; j++) {
+            for (int k = 0; k < numZ; k++) {
+                //Point origin(min.m_x + i * dx, min.m_y + j * dy, min.m_z + k * dz);
+                Cell cell;
+                cellMap.emplace(std::to_string(i) + "_" + std::to_string(j) + "_" + std::to_string(k), cell);
+            }
+        }
+    }           
+    return cellMap;
+}
+
 int main() {
     std::string filename = "../../assembly_planner/models/indoor_plant_02.obj";
     Mesh mesh(100000);
@@ -261,7 +260,7 @@ int main() {
     std::cout << "\nBounding box: " << mesh.m_boundingBox[0].m_x << ", " << mesh.m_boundingBox[0].m_y << ", " << mesh.m_boundingBox[0].m_z << std::endl;
     std::cout << "Bounding box: " << mesh.m_boundingBox[1].m_x << ", " << mesh.m_boundingBox[1].m_y << ", " << mesh.m_boundingBox[1].m_z << std::endl;
     
-    auto start = std::chrono::high_resolution_clock::now();
+
 
     Point p1(0, 0, 0);
     Point p2(2, 0, 0);
@@ -289,6 +288,7 @@ int main() {
     std::map<std::string, Cell> cellMap = createCellMap(fullBoundingBox1, fullBoundingBox2, dx, dy, dz);
     std::cout << "\nNumber of cells: " << cellMap.size() << std::endl;
 
+    auto start = std::chrono::high_resolution_clock::now();
     Mesh outMesh1(100000);
     Mesh outMesh2(100000);
     splitMesh(plane, mesh, outMesh1, outMesh2);
@@ -303,6 +303,7 @@ int main() {
                 continue;
             } else {
                 it->second.taken = true;
+                /*
                 Point mirrored_p = mirroredPoint(outMesh1.m_vertices[i], plane);
                 std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz);
                 auto it_mirrored = cellMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
@@ -314,6 +315,7 @@ int main() {
                 } else {
                     std::cout << "Mirrored cell not found." << std::endl;
                 }
+                */
             }
         } else {
             std::cout << "\nMesh 1" << std::endl;
@@ -366,6 +368,13 @@ int main() {
 
     std::cout << "\nNumber of cells taken: " << numTaken << std::endl;
     std::cout << "Number of cells paired: " << numPaired << std::endl;
+
+    // CLean up cellMap
+    for (auto it = cellMap.begin(); it != cellMap.end(); it++) {
+        it->second.taken = false;
+        it->second.paired = false;
+    }
+    std::cout << "\nCellMap cleaned up." << std::endl;
 
     std::chrono::duration<double> elapsed = end - start;
     std::cout << "\nElapsed time: " << elapsed.count() << " s" << std::endl;
