@@ -2263,4 +2263,7 @@ CGAL_Qt6_moc_and_resources_autogen/timestamp: \
 	/opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake \
 	/opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake \
 	/opt/homebrew/share/cmake/Modules/SelectLibraryConfigurations.cmake \
+	/opt/homebrew/share/glm/glmConfig-release.cmake \
+	/opt/homebrew/share/glm/glmConfig.cmake \
+	/opt/homebrew/share/glm/glmConfigVersion.cmake \
 	/opt/homebrew/bin/cmake

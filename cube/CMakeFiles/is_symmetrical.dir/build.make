@@ -113,6 +113,7 @@ is_symmetrical: CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o
 is_symmetrical: CMakeFiles/is_symmetrical.dir/build.make
 is_symmetrical: /opt/homebrew/Cellar/sdl2/2.30.9/lib/libSDL2.dylib
 is_symmetrical: /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework
+is_symmetrical: /opt/homebrew/lib/libglm.dylib
 is_symmetrical: CMakeFiles/is_symmetrical.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable is_symmetrical"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/is_symmetrical.dir/link.txt --verbose=$(VERBOSE)

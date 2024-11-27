@@ -5,8 +5,8 @@ add a plane using 3 points
 group vertices into two groups
 
 method A:
-1. confirm both sides have the same number of vertices
-2. for loop to group 1, pair with the closest vertex in group 2, find distance
+1. confirm both sides have the same number of vertices (or not)
+2. for loop to group 1, pair with the closest vertex in group 2, find distance. Use spatial data structure (kd tree bsp tree etc)
 
 method B:
 0. fill the holes to make both meshes solid
@@ -29,11 +29,62 @@ method C:
 #include <sstream>
 #include <vector>
 #include <string>
+#include <memory>
 #include <map>
 #include <GLUT/glut.h>
 #include <OpenGL/gl.h>
+#include <assert.h>
 
 #include "sdl_test.h"
+
+class Cell {
+public:
+    bool m_taken = false;
+    bool m_paired = false;
+};
+
+class CellGrid {
+public:
+    CellGrid(int x, int y, int z) {
+        m_x = x;
+        m_y = y;
+        m_z = z;
+        m_cells = new Cell[x * y * z];
+    }
+    ~CellGrid() {
+        delete[] m_cells;
+    }
+
+    void set(int x, int y, int z, const Cell& cell) {
+        assert(x >= 0 && x < m_x);
+        assert(y >= 0 && y < m_y);
+        assert(z >= 0 && z < m_z);
+        m_cells[z * m_x * m_y + y * m_x + x] = cell;
+    }
+
+    Cell* get(int x, int y, int z) {
+        if (x < 0 || x >= m_x) return nullptr;
+        if (y < 0 || y >= m_y) return nullptr;
+        if (z < 0 || z >= m_z) return nullptr;
+        return &(m_cells[z * m_x * m_y + y * m_x + x]);
+    }
+
+    void reset() {
+        memset(m_cells, 0, m_x * m_y * m_z * sizeof(Cell));
+    }
+
+    void getDimensions(int& x, int& y, int& z) {
+        x = m_x;
+        y = m_y;
+        z = m_z;
+    }
+
+private:
+    Cell* m_cells = nullptr;
+    int m_x = 0;
+    int m_y = 0;
+    int m_z = 0;
+};
 
 
 class Point{
@@ -60,17 +111,14 @@ class Mesh{
     public:
         Mesh(int reserveSize) { //constructor
             m_vertices.reserve(reserveSize);
-            //m_faces.reserve(reserveSize);
-            m_left_v.reserve(reserveSize);
-            m_right_v.reserve(reserveSize);
+            m_faces.reserve(reserveSize*3);
             m_boundingBox.push_back(Point(0,0,0));
             m_boundingBox.push_back(Point(0,0,0));
         }
         ~Mesh(){}
 
         std::vector<Point> m_vertices; // std is the standard library. it comes with c++. a vector of what? a vector of Point
-        std::vector<Point> m_left_v;
-        std::vector<Point> m_right_v;
+        std::vector<std::vector<int>> m_faces;
         std::vector<Point> m_boundingBox;
 
         void addPoint(Point &p){
@@ -114,6 +162,12 @@ std::vector<int> pointToIndex(const Point& p, const Point& min, const float& dx,
     return index;
 }
 
+void pointToIndex(const Point& p, const Point& min, const float& dx, const float& dy, const float& dz, int& x, int& y, int& z) {
+    x = static_cast<int>(std::floor((p.m_x - min.m_x) / dx));
+    y = static_cast<int>(std::floor((p.m_y - min.m_y) / dy));
+    z = static_cast<int>(std::floor((p.m_z - min.m_z) / dz));
+}
+
 void splitMesh(const Plane& plane, const Mesh& inMesh, Mesh& outMesh1, Mesh& outMesh2) {
     for (int i = 0; i < inMesh.m_vertices.size(); i++) {
         Point p = inMesh.m_vertices[i];
@@ -146,7 +200,17 @@ void loadOBJ(const std::string& filename, Mesh& mesh) {
             iss >> x >> y >> z;
             Point p(x, y, z);
             mesh.addPoint(p);
-        } 
+        } else if (prefix == "f") {
+            std::vector<int> face;
+            std::string vertex;
+            while (iss >> vertex) {
+                std::istringstream viss(vertex);
+                int index;
+                viss >> index;
+                face.push_back(index - 1); // OBJ format uses 1-based indexing
+            }
+            mesh.m_faces.push_back(face);
+        }
     }
     file.close();
 }
@@ -250,74 +314,98 @@ std::map<std::string, Cell> createCellMap(const Point& min, const Point& max, co
     return cellMap;
 }
 
-int main() {
-    std::string filename = "../../assembly_planner/models/indoor_plant_02.obj";
-    Mesh mesh(100000);
-    loadOBJ(filename, mesh);
-    std::cout <<"Number of vertices in mesh: " << mesh.m_vertices.size() << std::endl;
-
-    calculateBoundingBox(mesh);
-    std::cout << "\nBounding box: " << mesh.m_boundingBox[0].m_x << ", " << mesh.m_boundingBox[0].m_y << ", " << mesh.m_boundingBox[0].m_z << std::endl;
-    std::cout << "Bounding box: " << mesh.m_boundingBox[1].m_x << ", " << mesh.m_boundingBox[1].m_y << ", " << mesh.m_boundingBox[1].m_z << std::endl;
-    
+std::shared_ptr<CellGrid> createCellMap(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
+    std::shared_ptr<CellGrid> cg = std::make_shared<CellGrid>(static_cast<int>(std::ceil((max.m_x - min.m_x) / dx)),
+                      static_cast<int>(std::ceil((max.m_y - min.m_y) / dy)),
+                      static_cast<int>(std::ceil((max.m_z - min.m_z) / dz)));
+    return cellGrid;
+}
 
 
-    Point p1(0, 0, 0);
-    Point p2(2, 0, 0);
-    Point p3(0, 2, 0);
-    Plane plane(p1, p2, p3);
-    std::cout << "\nNormal of plane: " << plane.m_normal.m_x << ", " << plane.m_normal.m_y << ", " << plane.m_normal.m_z << std::endl;
-
-    Point boundingBox_mirrored1 = mirroredPoint(mesh.m_boundingBox[0], plane);
-    Point boundingBox_mirrored2 = mirroredPoint(mesh.m_boundingBox[1], plane);
-
-    Point fullBoundingBox1(std::min(std::min(mesh.m_boundingBox[0].m_x, boundingBox_mirrored1.m_x), boundingBox_mirrored2.m_x),
-                           std::min(std::min(mesh.m_boundingBox[0].m_y, boundingBox_mirrored1.m_y), boundingBox_mirrored2.m_y),
-                           std::min(std::min(mesh.m_boundingBox[0].m_z, boundingBox_mirrored1.m_z), boundingBox_mirrored2.m_z));
-    Point fullBoundingBox2(std::max(std::max(mesh.m_boundingBox[1].m_x, boundingBox_mirrored1.m_x), boundingBox_mirrored2.m_x),
-                            std::max(std::max(mesh.m_boundingBox[1].m_y, boundingBox_mirrored1.m_y), boundingBox_mirrored2.m_y),
-                            std::max(std::max(mesh.m_boundingBox[1].m_z, boundingBox_mirrored1.m_z), boundingBox_mirrored2.m_z)); 
-    
-    std::cout << "\nFull bounding box: " << fullBoundingBox1.m_x << ", " << fullBoundingBox1.m_y << ", " << fullBoundingBox1.m_z << std::endl;
-    std::cout << "Full bounding box: " << fullBoundingBox2.m_x << ", " << fullBoundingBox2.m_y << ", " << fullBoundingBox2.m_z << std::endl;
-
-    float dx = 0.1;
-    float dy = 0.1;
-    float dz = 0.1;
-
-    std::map<std::string, Cell> cellMap = createCellMap(fullBoundingBox1, fullBoundingBox2, dx, dy, dz);
-    std::cout << "\nNumber of cells: " << cellMap.size() << std::endl;
-
-    auto start = std::chrono::high_resolution_clock::now();
+void symmetryMappingGrid(const Plane& plane, const Mesh& mesh, const std::shared_ptr<CellGrid>& cellGrid, const float dx, const float dy, const float dz) {
     Mesh outMesh1(100000);
     Mesh outMesh2(100000);
     splitMesh(plane, mesh, outMesh1, outMesh2);
-    std::cout << "\nNumber of vertices in outMesh1: " << outMesh1.m_vertices.size() << std::endl;
-    std::cout << "Number of vertices in outMesh2: " << outMesh2.m_vertices.size() << std::endl;
-        
+    std::cout << "Number of vertices in mesh1: " << outMesh1.m_vertices.size() << std::endl;
+    std::cout << "Number of vertices in mesh2: " << outMesh2.m_vertices.size() << std::endl;
+
     for (int i = 0; i < outMesh1.m_vertices.size(); i++){
-        std::vector<int> index = pointToIndex(outMesh1.m_vertices[i], fullBoundingBox1, dx, dy, dz);
+        int x = 0;
+        int y = 0;
+        int z = 0;
+        pointToIndex(outMesh1.m_vertices[i], mesh.m_boundingBox[0], dx, dy, dz, x, y, z); // based on bounding box
+        Cell* cell = cellGrid->get(x, y, z);
+        if (cell == nullptr) {
+            std::cout << "Cell not found." << std::endl;
+            continue;
+        }
+        if (cell->paired == true) {
+            continue;
+        } else {
+            cell->taken = true;
+        }
+    }
+
+    for (int i = 0; i < outMesh2.m_vertices.size(); i++){
+        //std::vector<int> index = pointToIndex(outMesh2.m_vertices[i], fullBoundingBox1, dx, dy, dz); // based on full bounding box
+        int x = 0;
+        int y = 0;
+        int z = 0;
+        pointToIndex(outMesh2.m_vertices[i], mesh.m_boundingBox[0], dx, dy, dz, x, y, z); // based on bounding box
+        Cell* cell = cellGrid->get(x, y, z);
+        if (cell != nullptr) {
+            if (cell->paired == true) {
+                continue;
+            } else {
+                cell->second.taken = true;
+                Point mirrored_p = mirroredPoint(outMesh2.m_vertices[i], plane);
+                //std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz); // based on full bounding box
+                int x2 = 0;
+                int y2 = 0;
+                int z2 = 0;
+                pointToIndex(mirrored_p, mesh.m_boundingBox[0], dx, dy, dz, x2, y2, z2); // based on bounding box
+                Cell* cellMirrored = cellGrid->get(x2, y2, z2);
+                if (cellMirrored != nullptr) {
+                    if (cellMirrored->taken == true) {
+                        cell->paired = true;
+                        cellMirrored->paired = true;
+                    }
+                } else {
+                    continue;
+                    std::cout << "\nMesh 2" << std::endl;
+                    std::cout << "Mirrored point: " << mirrored_p.m_x << ", " << mirrored_p.m_y << ", " << mirrored_p.m_z << std::endl;
+                  // Update to use x2y2z2  std::cout << "Index: " << index_mirrored[0] << ", " << index_mirrored[1] << ", " << index_mirrored[2] << std::endl;
+                    std::cout << "Mirrored cell not found." << std::endl;
+                }
+            }
+        } else {
+            continue;
+            std::cout << "\nMesh 2" << std::endl;
+            std::cout << "Point: " << outMesh2.m_vertices[i].m_x << ", " << outMesh2.m_vertices[i].m_y << ", " << outMesh2.m_vertices[i].m_z << std::endl;
+           // Update to use xyzstd::cout << "Index: " << index[0] << ", " << index[1] << ", " << index[2] << std::endl;
+            std::cout << "Cell not found." << std::endl;
+        }
+    }
+}
+
+void symmetryMapping(const Plane& plane, const Mesh& mesh, std::map<std::string, Cell>& cellMap, const float dx, const float dy, const float dz) {
+    Mesh outMesh1(100000);
+    Mesh outMesh2(100000);
+    splitMesh(plane, mesh, outMesh1, outMesh2);
+    std::cout << "Number of vertices in mesh1: " << outMesh1.m_vertices.size() << std::endl;
+    std::cout << "Number of vertices in mesh2: " << outMesh2.m_vertices.size() << std::endl;
+
+    for (int i = 0; i < outMesh1.m_vertices.size(); i++){
+        std::vector<int> index = pointToIndex(outMesh1.m_vertices[i], mesh.m_boundingBox[0], dx, dy, dz); // based on bounding box
         auto it = cellMap.find(std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2]));
         if (it != cellMap.end()) {
             if (it->second.paired == true) {
                 continue;
             } else {
                 it->second.taken = true;
-                /*
-                Point mirrored_p = mirroredPoint(outMesh1.m_vertices[i], plane);
-                std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz);
-                auto it_mirrored = cellMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
-                if (it_mirrored != cellMap.end()) {
-                    if (it_mirrored->second.taken == true) {
-                        it->second.paired = true;
-                        it_mirrored->second.paired = true;
-                    }
-                } else {
-                    std::cout << "Mirrored cell not found." << std::endl;
-                }
-                */
             }
         } else {
+            continue;
             std::cout << "\nMesh 1" << std::endl;
             std::cout << "Point: " << outMesh1.m_vertices[i].m_x << ", " << outMesh1.m_vertices[i].m_y << ", " << outMesh1.m_vertices[i].m_z << std::endl;
             std::cout << "Index: " << index[0] << ", " << index[1] << ", " << index[2] << std::endl;
@@ -326,7 +414,8 @@ int main() {
     }
 
     for (int i = 0; i < outMesh2.m_vertices.size(); i++){
-        std::vector<int> index = pointToIndex(outMesh2.m_vertices[i], fullBoundingBox1, dx, dy, dz);
+        //std::vector<int> index = pointToIndex(outMesh2.m_vertices[i], fullBoundingBox1, dx, dy, dz); // based on full bounding box
+        std::vector<int> index = pointToIndex(outMesh2.m_vertices[i], mesh.m_boundingBox[0], dx, dy, dz); // based on bounding box
         auto it = cellMap.find(std::to_string(index[0]) + "_" + std::to_string(index[1]) + "_" + std::to_string(index[2]));
         if (it != cellMap.end()) {
             if (it->second.paired == true) {
@@ -334,7 +423,8 @@ int main() {
             } else {
                 it->second.taken = true;
                 Point mirrored_p = mirroredPoint(outMesh2.m_vertices[i], plane);
-                std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz);
+                //std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz); // based on full bounding box
+                std::vector<int> index_mirrored = pointToIndex(mirrored_p, mesh.m_boundingBox[0], dx, dy, dz); // based on bounding box
                 auto it_mirrored = cellMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
                 if (it_mirrored != cellMap.end()) {
                     if (it_mirrored->second.taken == true) {
@@ -342,19 +432,24 @@ int main() {
                         it_mirrored->second.paired = true;
                     }
                 } else {
+                    continue;
+                    std::cout << "\nMesh 2" << std::endl;
+                    std::cout << "Mirrored point: " << mirrored_p.m_x << ", " << mirrored_p.m_y << ", " << mirrored_p.m_z << std::endl;
+                    std::cout << "Index: " << index_mirrored[0] << ", " << index_mirrored[1] << ", " << index_mirrored[2] << std::endl;
                     std::cout << "Mirrored cell not found." << std::endl;
                 }
             }
         } else {
+            continue;
             std::cout << "\nMesh 2" << std::endl;
             std::cout << "Point: " << outMesh2.m_vertices[i].m_x << ", " << outMesh2.m_vertices[i].m_y << ", " << outMesh2.m_vertices[i].m_z << std::endl;
             std::cout << "Index: " << index[0] << ", " << index[1] << ", " << index[2] << std::endl;
             std::cout << "Cell not found." << std::endl;
         }
     }
+}
 
-    int numTaken = 0;
-    int numPaired = 0;
+void evaluateSymmetry(std::map<std::string, Cell>& cellMap, int& numTaken, int& numPaired, float& symmetryScore) {
     for (const auto& pair : cellMap) {
         if (pair.second.taken == true) {
             numTaken++;
@@ -363,23 +458,126 @@ int main() {
             numPaired++;
         }
     }
+    symmetryScore = static_cast<float>(numPaired) / static_cast<float>(numTaken);
+    std::cout << "Cells taken: " << numTaken << std::endl;
+    std::cout << "Cells paired: " << numPaired << std::endl;
+    std::cout << "Symmetry score: " << symmetryScore << std::endl;
+}
 
-    auto end = std::chrono::high_resolution_clock::now();
-
-    std::cout << "\nNumber of cells taken: " << numTaken << std::endl;
-    std::cout << "Number of cells paired: " << numPaired << std::endl;
-
-    // CLean up cellMap
+void evaluateSymmetryCellGrid(const std::shared_ptr<CellGrid>& cellGrid, int& numTaken, int& numPaired, float& symmetryScore) {
+    int nx = 0;
+    int ny = 0;
+    int nz = 0;
+    cellGrid->getDimensions(nx, ny, nz);
+    numTaken = 0;
+    numPaired = 0;
+    for (int i = 0; i < nx; i++) {
+        for (int j = 0; j < ny; j++) {
+            for (int k = 0; k < nz; k++) {
+                Cell* cell = cellGrid->get(i, j, k);
+                if (cell != nullptr) {
+                    if (cell->taken == true) {
+                        numTaken++;
+                    }
+                    if (cell->paired == true) {
+                        numPaired++;
+                    }
+                }
+            }
+        }
+    }
+    symmetryScore = static_cast<float>(numPaired) / static_cast<float>(numTaken);
+    std::cout << "Cells taken: " << numTaken << std::endl;
+    std::cout << "Cells paired: " << numPaired << std::endl;
+    std::cout << "Symmetry score: " << symmetryScore << std::endl;
+}
+void cleanUpCellMap(std::map<std::string, Cell>& cellMap, int& numTaken, int& numPaired, float& symmetryScore) {
     for (auto it = cellMap.begin(); it != cellMap.end(); it++) {
         it->second.taken = false;
         it->second.paired = false;
     }
+    numTaken = 0;
+    numPaired = 0;
+    symmetryScore = 0;
     std::cout << "\nCellMap cleaned up." << std::endl;
+}
 
+void cleanUpCellGrid(const std::shared_ptr<CellGrid>& cellGrid, int& numTaken, int& numPaired, float& symmetryScore) {
+    cellGrid->reset();
+    numTaken = 0;
+    numPaired = 0;
+    symmetryScore = 0;
+    std::cout << "\nCellGrid cleaned up." << std::endl;
+}
+
+int main() {
+    std::string filename = "../../assembly_planner/models/indoor_plant_02.obj";
+    Mesh mesh(100000);
+    loadOBJ(filename, mesh);
+    std::cout <<"Number of vertices in mesh: " << mesh.m_vertices.size() << std::endl;
+    std::cout <<"Number of faces in mesh: " << mesh.m_faces.size() << std::endl;
+
+    calculateBoundingBox(mesh);
+    std::cout << "\nBounding box: " << mesh.m_boundingBox[0].m_x << ", " << mesh.m_boundingBox[0].m_y << ", " << mesh.m_boundingBox[0].m_z << std::endl;
+    std::cout << "Bounding box: " << mesh.m_boundingBox[1].m_x << ", " << mesh.m_boundingBox[1].m_y << ", " << mesh.m_boundingBox[1].m_z << std::endl;
+    
+    // Generate a plane
+    Point p1(0, 0, 0);
+    Point p2(2, 0, 0);
+    Point p3(0, 2, 0);
+    Plane plane(p1, p2, p3);
+    std::cout << "\nNormal of plane: " << plane.m_normal.m_x << ", " << plane.m_normal.m_y << ", " << plane.m_normal.m_z << std::endl;
+
+    // Create cell map
+    float dx = 0.1;
+    float dy = 0.1;
+    float dz = 0.1;
+    std::map<std::string, Cell> cellMap = createCellMap(mesh.m_boundingBox[0], mesh.m_boundingBox[1], dx, dy, dz); //Bounding box
+    std::cout << "\nNumber of cells: " << cellMap.size() << std::endl;
+
+    // check symmetry
+    int numTaken = 0;
+    int numPaired = 0;
+    float symmetryScore = 0;
+    for (int i = 0; i < 5; i++) {
+        auto start = std::chrono::high_resolution_clock::now();
+        // Randomly create a Plane
+        float x1 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        float y1 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        float z1 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        Point p1(x1, y1, z1);
+
+        float x2 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        float y2 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        float z2 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        Point p2(x2, y2, z2);
+
+        float x3 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        float y3 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        float z3 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+        Point p3(x3, y3, z3);
+
+        std::cout << "\nPlane's 3 points: " << p1.m_x << ", " << p1.m_y << ", " << p1.m_z << std::endl;
+
+        Plane mirrorPlane(p1, p2, p3);
+        cleanUpCellMap(cellMap, numTaken, numPaired, symmetryScore);
+        symmetryMapping(mirrorPlane, mesh, cellMap, dx, dy, dz);
+        evaluateSymmetry(cellMap, numTaken, numPaired, symmetryScore);
+        
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> elapsed = end - start;
+        std::cout << "Elapsed time: " << elapsed.count() << " s" << std::endl;
+    }
+    
+    auto start = std::chrono::high_resolution_clock::now();
+    cleanUpCellMap(cellMap, numTaken, numPaired, symmetryScore);
+    symmetryMapping(plane, mesh, cellMap, dx, dy, dz);
+    evaluateSymmetry(cellMap, numTaken, numPaired, symmetryScore);
+    auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed = end - start;
-    std::cout << "\nElapsed time: " << elapsed.count() << " s" << std::endl;
+    std::cout << "Elapsed time: " << elapsed.count() << " s" << std::endl;
 
-
+    /* 
     // Visualization demo
     std::vector<Vertex> vertices = {
         {{0.0f,  0.5f, 1.0f}, {1.0f, 0.0f, 0.0f}}, // Top vertex (red)
@@ -389,9 +587,25 @@ int main() {
 
     std::vector<GLuint> indices = {0, 1, 2}; // Triangle: Vertex 0, Vertex 1, Vertex 2
     visualize_mesh(vertices, indices);
+    */
+
+    // Visualization of the loaded mesh
+    std::vector<Vertex> meshVertices;
+    std::vector<GLuint> meshIndices;
+
+    for (const auto& vertex : mesh.m_vertices) {
+        meshVertices.push_back({{vertex.m_x, vertex.m_y, vertex.m_z}, {1.0f, 1.0f, 1.0f}});
+    }
+
+    for (const auto& face : mesh.m_faces) {
+        for (const auto& index : face) {
+            meshIndices.push_back(index);
+        }
+    }
+
+    visualize_mesh(meshVertices, meshIndices);
     
     return 0;
-
 }
 
 

@@ -1005,12 +1005,14 @@ CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o: sdl_test.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/__wctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/__xlocale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_abort.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_ctermid.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_ctype.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_inttypes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_locale.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_mb_cur_max.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_printf.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_static_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_stdio.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_stdlib.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_string.h \
@@ -1038,6 +1040,7 @@ CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o: sdl_test.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/arm/limits.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/arm/signal.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/arm/types.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/adjacent_find.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/all_of.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/any_of.h \
@@ -1744,8 +1747,10 @@ CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o: sdl_test.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/atomic \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/bit \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/bitset \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/cctype \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/cerrno \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/cfloat \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/climits \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/clocale \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/cmath \
@@ -2015,8 +2020,496 @@ CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o: sdl_test.cpp \
   /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_version.h \
   /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_video.h \
   /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/begin_code.h \
-  /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/close_code.h
+  /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/close_code.h \
+  /opt/homebrew/include/glm/matrix.hpp \
+  /opt/homebrew/include/glm/detail/type_mat2x2.hpp \
+  /opt/homebrew/include/glm/detail/type_mat2x3.hpp \
+  /opt/homebrew/include/glm/detail/type_mat2x3.inl \
+  /opt/homebrew/include/glm/detail/type_mat2x4.hpp \
+  /opt/homebrew/include/glm/detail/type_mat2x4.inl \
+  /opt/homebrew/include/glm/detail/type_mat3x2.hpp \
+  /opt/homebrew/include/glm/detail/type_mat3x2.inl \
+  /opt/homebrew/include/glm/detail/type_mat3x3.hpp \
+  /opt/homebrew/include/glm/detail/type_mat3x3.inl \
+  /opt/homebrew/include/glm/detail/type_mat3x4.hpp \
+  /opt/homebrew/include/glm/detail/type_mat3x4.inl \
+  /opt/homebrew/include/glm/detail/type_mat4x2.hpp \
+  /opt/homebrew/include/glm/detail/type_mat4x2.inl \
+  /opt/homebrew/include/glm/detail/type_mat4x3.hpp \
+  /opt/homebrew/include/glm/detail/type_mat4x3.inl \
+  /opt/homebrew/include/glm/detail/type_mat4x4.hpp \
+  /opt/homebrew/include/glm/detail/type_mat4x4.inl \
+  /opt/homebrew/include/glm/detail/type_vec2.hpp \
+  /opt/homebrew/include/glm/detail/type_vec3.hpp \
+  /opt/homebrew/include/glm/detail/type_vec4.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double2x3.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double2x3_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double2x4.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double2x4_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double3x2.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double3x2_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double3x3.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double3x3_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double3x4.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double3x4_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double4x2.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double4x2_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double4x3.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double4x3_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double4x4.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double4x4_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float2x3.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float2x3_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float2x4.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float2x4_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float3x2.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float3x2_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float3x3.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float3x3_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float3x4.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float3x4_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float4x2.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float4x2_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float4x3.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float4x3_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float4x4.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float4x4_precision.hpp \
+  /opt/homebrew/include/glm/common.hpp \
+  /opt/homebrew/include/glm/detail/func_vector_relational.inl \
+  /opt/homebrew/include/glm/detail/qualifier.hpp \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/vector_relational.hpp \
+  /opt/homebrew/include/glm/detail/compute_vector_relational.hpp \
+  /opt/homebrew/include/glm/detail/_fixes.hpp \
+  /opt/homebrew/include/glm/detail/_vectorize.hpp \
+  /opt/homebrew/include/glm/detail/compute_common.hpp \
+  /opt/homebrew/include/glm/detail/func_common.inl \
+  /opt/homebrew/include/glm/detail/func_exponential.inl \
+  /opt/homebrew/include/glm/detail/qualifier.hpp \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/detail/type_vec1.hpp \
+  /opt/homebrew/include/glm/detail/type_vec1.inl \
+  /opt/homebrew/include/glm/detail/type_vec2.hpp \
+  /opt/homebrew/include/glm/detail/type_vec3.hpp \
+  /opt/homebrew/include/glm/detail/type_vec4.hpp \
+  /opt/homebrew/include/glm/exponential.hpp \
+  /opt/homebrew/include/glm/detail/func_geometric.inl \
+  /opt/homebrew/include/glm/detail/type_vec3.hpp \
+  /opt/homebrew/include/glm/geometric.hpp \
+  /opt/homebrew/include/glm/detail/func_matrix.inl \
+  /opt/homebrew/include/glm/detail/qualifier.hpp \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/mat2x2.hpp \
+  /opt/homebrew/include/glm/mat2x3.hpp \
+  /opt/homebrew/include/glm/mat2x4.hpp \
+  /opt/homebrew/include/glm/mat3x2.hpp \
+  /opt/homebrew/include/glm/mat3x3.hpp \
+  /opt/homebrew/include/glm/mat3x4.hpp \
+  /opt/homebrew/include/glm/mat4x2.hpp \
+  /opt/homebrew/include/glm/mat4x3.hpp \
+  /opt/homebrew/include/glm/mat4x4.hpp \
+  /opt/homebrew/include/glm/matrix.hpp \
+  /opt/homebrew/include/glm/vec2.hpp \
+  /opt/homebrew/include/glm/vec3.hpp \
+  /opt/homebrew/include/glm/vec4.hpp \
+  /opt/homebrew/include/glm/detail/compute_vector_relational.hpp \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/detail/compute_vector_relational.hpp \
+  /opt/homebrew/include/glm/detail/qualifier.hpp \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/detail/type_mat2x2.hpp \
+  /opt/homebrew/include/glm/detail/type_mat2x2.inl \
+  /opt/homebrew/include/glm/detail/type_vec2.hpp \
+  /opt/homebrew/include/glm/detail/type_vec2.inl \
+  /opt/homebrew/include/glm/detail/type_vec3.hpp \
+  /opt/homebrew/include/glm/detail/type_vec3.inl \
+  /opt/homebrew/include/glm/detail/type_vec4.hpp \
+  /opt/homebrew/include/glm/detail/type_vec4.inl \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/ext/scalar_int_sized.hpp \
+  /opt/homebrew/include/glm/ext/scalar_uint_sized.hpp \
+  /opt/homebrew/include/glm/ext/vector_int2.hpp \
+  /opt/homebrew/include/glm/ext/vector_int3.hpp \
+  /opt/homebrew/include/glm/ext/vector_int4.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint2.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint3.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint4.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double2x2.hpp \
+  /opt/homebrew/include/glm/ext/matrix_double2x2_precision.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float2x2.hpp \
+  /opt/homebrew/include/glm/ext/matrix_float2x2_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_bool2.hpp \
+  /opt/homebrew/include/glm/ext/vector_bool2_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_bool3.hpp \
+  /opt/homebrew/include/glm/ext/vector_bool3_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_bool4.hpp \
+  /opt/homebrew/include/glm/ext/vector_bool4_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_double2.hpp \
+  /opt/homebrew/include/glm/ext/vector_double2_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_double3.hpp \
+  /opt/homebrew/include/glm/ext/vector_double3_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_double4.hpp \
+  /opt/homebrew/include/glm/ext/vector_double4_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_float2.hpp \
+  /opt/homebrew/include/glm/ext/vector_float2_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_float3.hpp \
+  /opt/homebrew/include/glm/ext/vector_float3_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_float4.hpp \
+  /opt/homebrew/include/glm/ext/vector_float4_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_int2.hpp \
+  /opt/homebrew/include/glm/ext/vector_int2_sized.hpp \
+  /opt/homebrew/include/glm/ext/vector_int3.hpp \
+  /opt/homebrew/include/glm/ext/vector_int3_sized.hpp \
+  /opt/homebrew/include/glm/ext/vector_int4.hpp \
+  /opt/homebrew/include/glm/ext/vector_int4_sized.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint2.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint2_sized.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint3.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint3_sized.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint4.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint4_sized.hpp \
+  /opt/homebrew/include/glm/common.hpp \
+  /opt/homebrew/include/glm/common.hpp \
+  /opt/homebrew/include/glm/simd/platform.h \
+  /opt/homebrew/include/glm/detail/_fixes.hpp \
+  /opt/homebrew/include/glm/detail/_vectorize.hpp \
+  /opt/homebrew/include/glm/detail/func_integer.inl \
+  /opt/homebrew/include/glm/detail/func_packing.inl \
+  /opt/homebrew/include/glm/detail/func_trigonometric.inl \
+  /opt/homebrew/include/glm/detail/qualifier.hpp \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/detail/type_half.hpp \
+  /opt/homebrew/include/glm/detail/type_half.inl \
+  /opt/homebrew/include/glm/exponential.hpp \
+  /opt/homebrew/include/glm/fwd.hpp \
+  /opt/homebrew/include/glm/geometric.hpp \
+  /opt/homebrew/include/glm/glm.hpp \
+  /opt/homebrew/include/glm/ext/scalar_constants.hpp \
+  /opt/homebrew/include/glm/geometric.hpp \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/ext/scalar_constants.hpp \
+  /opt/homebrew/include/glm/ext/scalar_constants.inl \
+  /opt/homebrew/include/glm/gtc/constants.hpp \
+  /opt/homebrew/include/glm/gtc/constants.inl \
+  /opt/homebrew/include/glm/matrix.hpp \
+  /opt/homebrew/include/glm/trigonometric.hpp \
+  /opt/homebrew/include/glm/ext/matrix_clip_space.hpp \
+  /opt/homebrew/include/glm/ext/matrix_clip_space.inl \
+  /opt/homebrew/include/glm/ext/matrix_projection.hpp \
+  /opt/homebrew/include/glm/ext/matrix_projection.inl \
+  /opt/homebrew/include/glm/ext/matrix_transform.hpp \
+  /opt/homebrew/include/glm/ext/matrix_transform.inl \
+  /opt/homebrew/include/glm/geometric.hpp \
+  /opt/homebrew/include/glm/common.hpp \
+  /opt/homebrew/include/glm/detail/qualifier.hpp \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/detail/type_mat3x3.hpp \
+  /opt/homebrew/include/glm/detail/type_mat4x4.hpp \
+  /opt/homebrew/include/glm/detail/type_vec3.hpp \
+  /opt/homebrew/include/glm/detail/type_vec4.hpp \
+  /opt/homebrew/include/glm/exponential.hpp \
+  /opt/homebrew/include/glm/common.hpp \
+  /opt/homebrew/include/glm/detail/type_mat3x3.hpp \
+  /opt/homebrew/include/glm/detail/type_mat4x4.hpp \
+  /opt/homebrew/include/glm/detail/type_vec3.hpp \
+  /opt/homebrew/include/glm/detail/type_vec4.hpp \
+  /opt/homebrew/include/glm/exponential.hpp \
+  /opt/homebrew/include/glm/vector_relational.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_common.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_geometric.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_relational.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_relational.inl \
+  /opt/homebrew/include/glm/ext/vector_relational.hpp \
+  /opt/homebrew/include/glm/gtc/constants.hpp \
+  /opt/homebrew/include/glm/gtc/matrix_transform.hpp \
+  /opt/homebrew/include/glm/trigonometric.hpp \
+  /opt/homebrew/include/glm/detail/qualifier.hpp \
+  /opt/homebrew/include/glm/detail/setup.hpp \
+  /opt/homebrew/include/glm/detail/type_float.hpp \
+  /opt/homebrew/include/glm/detail/type_quat.hpp \
+  /opt/homebrew/include/glm/detail/type_quat.inl \
+  /opt/homebrew/include/glm/detail/type_vec1.hpp \
+  /opt/homebrew/include/glm/exponential.hpp \
+  /opt/homebrew/include/glm/exponential.hpp \
+  /opt/homebrew/include/glm/ext/vector_relational.hpp \
+  /opt/homebrew/include/glm/geometric.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_geometric.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_geometric.inl \
+  /opt/homebrew/include/glm/ext/scalar_constants.hpp \
+  /opt/homebrew/include/glm/ext/scalar_int_sized.hpp \
+  /opt/homebrew/include/glm/ext/scalar_uint_sized.hpp \
+  /opt/homebrew/include/glm/ext/vector_int1.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint1.hpp \
+  /opt/homebrew/include/glm/geometric.hpp \
+  /opt/homebrew/include/glm/trigonometric.hpp \
+  /opt/homebrew/include/glm/vector_relational.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_common.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_common.inl \
+  /opt/homebrew/include/glm/ext/quaternion_double.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_double_precision.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_float.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_float_precision.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_geometric.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_relational.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_transform.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_transform.inl \
+  /opt/homebrew/include/glm/ext/quaternion_trigonometric.hpp \
+  /opt/homebrew/include/glm/ext/quaternion_trigonometric.inl \
+  /opt/homebrew/include/glm/ext/scalar_constants.hpp \
+  /opt/homebrew/include/glm/ext/vector_bool1.hpp \
+  /opt/homebrew/include/glm/ext/vector_bool1_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_double1.hpp \
+  /opt/homebrew/include/glm/ext/vector_double1_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_float1.hpp \
+  /opt/homebrew/include/glm/ext/vector_float1_precision.hpp \
+  /opt/homebrew/include/glm/ext/vector_int1.hpp \
+  /opt/homebrew/include/glm/ext/vector_int1_sized.hpp \
+  /opt/homebrew/include/glm/ext/vector_relational.hpp \
+  /opt/homebrew/include/glm/ext/vector_relational.inl \
+  /opt/homebrew/include/glm/ext/vector_uint1.hpp \
+  /opt/homebrew/include/glm/ext/vector_uint1_sized.hpp \
+  /opt/homebrew/include/glm/geometric.hpp \
+  /opt/homebrew/include/glm/gtc/constants.hpp \
+  /opt/homebrew/include/glm/gtc/matrix_transform.hpp \
+  /opt/homebrew/include/glm/trigonometric.hpp \
+  /opt/homebrew/include/glm/vector_relational.hpp \
+  /opt/homebrew/include/glm/gtc/epsilon.hpp \
+  /opt/homebrew/include/glm/gtc/epsilon.inl \
+  /opt/homebrew/include/glm/gtc/quaternion.hpp \
+  /opt/homebrew/include/glm/gtc/quaternion.inl \
+  /opt/homebrew/include/glm/gtc/vec1.hpp \
+  /opt/homebrew/include/glm/mat2x2.hpp \
+  /opt/homebrew/include/glm/mat2x3.hpp \
+  /opt/homebrew/include/glm/mat2x4.hpp \
+  /opt/homebrew/include/glm/mat3x2.hpp \
+  /opt/homebrew/include/glm/mat3x3.hpp \
+  /opt/homebrew/include/glm/mat3x4.hpp \
+  /opt/homebrew/include/glm/mat4x2.hpp \
+  /opt/homebrew/include/glm/mat4x3.hpp \
+  /opt/homebrew/include/glm/mat4x4.hpp \
+  /opt/homebrew/include/glm/matrix.hpp \
+  /opt/homebrew/include/glm/trigonometric.hpp \
+  /opt/homebrew/include/glm/vec2.hpp \
+  /opt/homebrew/include/glm/vec3.hpp \
+  /opt/homebrew/include/glm/vec4.hpp \
+  /opt/homebrew/include/glm/gtc/matrix_transform.hpp \
+  /opt/homebrew/include/glm/gtc/matrix_transform.inl \
+  /opt/homebrew/include/glm/gtc/type_ptr.hpp \
+  /opt/homebrew/include/glm/gtc/type_ptr.inl \
+  /opt/homebrew/include/glm/integer.hpp \
+  /opt/homebrew/include/glm/mat2x2.hpp \
+  /opt/homebrew/include/glm/mat2x3.hpp \
+  /opt/homebrew/include/glm/mat2x4.hpp \
+  /opt/homebrew/include/glm/mat3x2.hpp \
+  /opt/homebrew/include/glm/mat3x3.hpp \
+  /opt/homebrew/include/glm/mat3x4.hpp \
+  /opt/homebrew/include/glm/mat4x2.hpp \
+  /opt/homebrew/include/glm/mat4x3.hpp \
+  /opt/homebrew/include/glm/mat4x4.hpp \
+  /opt/homebrew/include/glm/matrix.hpp \
+  /opt/homebrew/include/glm/packing.hpp \
+  /opt/homebrew/include/glm/trigonometric.hpp \
+  /opt/homebrew/include/glm/vec2.hpp \
+  /opt/homebrew/include/glm/vec3.hpp \
+  /opt/homebrew/include/glm/vec4.hpp \
+  /opt/homebrew/include/glm/vector_relational.hpp
 
+
+/opt/homebrew/include/glm/packing.hpp:
+
+/opt/homebrew/include/glm/gtc/type_ptr.inl:
+
+/opt/homebrew/include/glm/gtc/matrix_transform.inl:
+
+/opt/homebrew/include/glm/gtc/quaternion.inl:
+
+/opt/homebrew/include/glm/gtc/epsilon.inl:
+
+/opt/homebrew/include/glm/gtc/epsilon.hpp:
+
+/opt/homebrew/include/glm/ext/vector_uint1_sized.hpp:
+
+/opt/homebrew/include/glm/ext/vector_float1_precision.hpp:
+
+/opt/homebrew/include/glm/ext/vector_double1_precision.hpp:
+
+/opt/homebrew/include/glm/ext/vector_bool1.hpp:
+
+/opt/homebrew/include/glm/ext/quaternion_trigonometric.inl:
+
+/opt/homebrew/include/glm/ext/quaternion_double_precision.hpp:
+
+/opt/homebrew/include/glm/ext/quaternion_double.hpp:
+
+/opt/homebrew/include/glm/ext/quaternion_common.inl:
+
+/opt/homebrew/include/glm/ext/quaternion_geometric.inl:
+
+/opt/homebrew/include/glm/detail/type_quat.hpp:
+
+/opt/homebrew/include/glm/gtc/matrix_transform.hpp:
+
+/opt/homebrew/include/glm/ext/vector_relational.hpp:
+
+/opt/homebrew/include/glm/ext/quaternion_common.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_transform.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_projection.hpp:
+
+/opt/homebrew/include/glm/detail/type_quat.inl:
+
+/opt/homebrew/include/glm/ext/matrix_clip_space.hpp:
+
+/opt/homebrew/include/glm/ext/scalar_constants.inl:
+
+/opt/homebrew/include/glm/ext/scalar_constants.hpp:
+
+/opt/homebrew/include/glm/glm.hpp:
+
+/opt/homebrew/include/glm/fwd.hpp:
+
+/opt/homebrew/include/glm/detail/type_half.inl:
+
+/opt/homebrew/include/glm/detail/type_half.hpp:
+
+/opt/homebrew/include/glm/detail/func_integer.inl:
+
+/opt/homebrew/include/glm/ext/vector_uint2_sized.hpp:
+
+/opt/homebrew/include/glm/ext/vector_int3_sized.hpp:
+
+/opt/homebrew/include/glm/ext/vector_int2_sized.hpp:
+
+/opt/homebrew/include/glm/ext/vector_float4_precision.hpp:
+
+/opt/homebrew/include/glm/ext/vector_float2_precision.hpp:
+
+/opt/homebrew/include/glm/ext/vector_float2.hpp:
+
+/opt/homebrew/include/glm/ext/vector_double3.hpp:
+
+/opt/homebrew/include/glm/ext/vector_double3_precision.hpp:
+
+/opt/homebrew/include/glm/ext/vector_double2_precision.hpp:
+
+/opt/homebrew/include/glm/ext/vector_bool3_precision.hpp:
+
+/opt/homebrew/include/glm/ext/vector_bool3.hpp:
+
+/opt/homebrew/include/glm/ext/vector_bool2_precision.hpp:
+
+/opt/homebrew/include/glm/ext/vector_bool2.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float2x2_precision.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float2x2.hpp:
+
+/opt/homebrew/include/glm/ext/vector_uint3.hpp:
+
+/opt/homebrew/include/glm/ext/vector_int4.hpp:
+
+/opt/homebrew/include/glm/ext/vector_int2.hpp:
+
+/opt/homebrew/include/glm/ext/scalar_uint_sized.hpp:
+
+/opt/homebrew/include/glm/ext/scalar_int_sized.hpp:
+
+/opt/homebrew/include/glm/detail/type_vec3.inl:
+
+/opt/homebrew/include/glm/ext/vector_uint4_sized.hpp:
+
+/opt/homebrew/include/glm/vec3.hpp:
+
+/opt/homebrew/include/glm/vec2.hpp:
+
+/opt/homebrew/include/glm/mat4x4.hpp:
+
+/opt/homebrew/include/glm/mat3x3.hpp:
+
+/opt/homebrew/include/glm/mat3x2.hpp:
+
+/opt/homebrew/include/glm/mat2x3.hpp:
+
+/opt/homebrew/include/glm/mat2x2.hpp:
+
+/opt/homebrew/include/glm/exponential.hpp:
+
+/opt/homebrew/include/glm/detail/type_vec1.inl:
+
+/opt/homebrew/include/glm/detail/type_vec1.hpp:
+
+/opt/homebrew/include/glm/detail/compute_common.hpp:
+
+/opt/homebrew/include/glm/detail/_fixes.hpp:
+
+/opt/homebrew/include/glm/detail/compute_vector_relational.hpp:
+
+/opt/homebrew/include/glm/detail/setup.hpp:
+
+/opt/homebrew/include/glm/ext/vector_bool4.hpp:
+
+/opt/homebrew/include/glm/detail/qualifier.hpp:
+
+/opt/homebrew/include/glm/ext/vector_relational.inl:
+
+/opt/homebrew/include/glm/vec4.hpp:
+
+/opt/homebrew/include/glm/detail/func_vector_relational.inl:
+
+/opt/homebrew/include/glm/common.hpp:
+
+/opt/homebrew/include/glm/ext/vector_int1.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float4x3_precision.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float4x2.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float3x4_precision.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float3x3_precision.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float3x2.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float2x4_precision.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float2x3.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double4x4_precision.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double4x4.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double4x3.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double4x2_precision.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double4x2.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double3x4.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double3x3_precision.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double2x4_precision.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double2x4.hpp:
+
+/opt/homebrew/include/glm/detail/type_vec4.hpp:
+
+/opt/homebrew/include/glm/detail/type_vec2.hpp:
+
+/opt/homebrew/include/glm/mat4x2.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_float4x4.hpp:
+
+/opt/homebrew/include/glm/detail/type_mat4x4.inl:
+
+/opt/homebrew/include/glm/detail/type_mat4x4.hpp:
+
+/opt/homebrew/include/glm/detail/type_mat4x3.inl:
+
+/opt/homebrew/include/glm/detail/type_mat3x2.hpp:
+
+/opt/homebrew/include/glm/detail/type_mat2x3.inl:
 
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/close_code.h:
 
@@ -2036,11 +2529,19 @@ CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o: sdl_test.cpp \
 
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_platform.h:
 
+/opt/homebrew/include/glm/ext/quaternion_trigonometric.hpp:
+
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_mouse.h:
+
+/opt/homebrew/include/glm/ext/matrix_double3x2.hpp:
 
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_loadso.h:
 
+/opt/homebrew/include/glm/detail/type_vec3.hpp:
+
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_keycode.h:
+
+/opt/homebrew/include/glm/ext/matrix_projection.inl:
 
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_joystick.h:
 
@@ -2072,7 +2573,19 @@ CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o: sdl_test.cpp \
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/float.h:
 
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/cassert:
+
+/opt/homebrew/include/glm/ext/vector_double2.hpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/assert.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_static_assert.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_inttypes.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_assert.h:
+
+/opt/homebrew/include/glm/ext/vector_int3.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/AvailabilityMacros.h:
 
@@ -2083,6 +2596,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/usr/lib/clang/16/include/__stddef_size_t.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/16/include/__stddef_ptrdiff_t.h:
+
+/opt/homebrew/include/glm/detail/func_geometric.inl:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/16/include/__stddef_nullptr_t.h:
 
@@ -2103,6 +2618,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/xlocale/_time.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/xlocale/_string.h:
+
+/opt/homebrew/include/glm/ext/matrix_double2x3.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/xlocale/___wctype.h:
 
@@ -2168,6 +2685,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_nlink_t.h:
 
+/opt/homebrew/include/glm/ext/matrix_double3x4_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_mbstate_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_mach_port_t.h:
@@ -2203,6 +2722,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_fd_clr.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_dev_t.h:
+
+/opt/homebrew/include/glm/ext/vector_bool1_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_ct_rune_t.h:
 
@@ -2244,11 +2765,15 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sched.h:
 
+/opt/homebrew/include/glm/ext/matrix_float4x2_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_ssize_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/runetype.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/pthread/qos.h:
+
+/opt/homebrew/include/glm/ext/matrix_float4x4_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/pthread.h:
 
@@ -2262,6 +2787,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/machine/types.h:
 
+/opt/homebrew/include/glm/ext/vector_uint1.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/machine/signal.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/machine/limits.h:
@@ -2274,6 +2801,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/mach/machine/_structs.h:
 
+/opt/homebrew/include/glm/detail/type_float.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/mach/arm/_structs.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/errno.h:
@@ -2281,6 +2810,8 @@ sdl_test.h:
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_thread.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/ctype.h:
+
+/opt/homebrew/include/glm/detail/type_mat4x2.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/wctype.h:
 
@@ -2312,11 +2843,15 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/memory:
 
+/opt/homebrew/include/glm/detail/func_trigonometric.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/math.h:
 
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_render.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/map:
+
+/opt/homebrew/include/glm/ext/vector_uint2.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/locale:
 
@@ -2356,11 +2891,19 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__utility/rel_ops.h:
 
+/opt/homebrew/include/glm/vector_relational.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__memory/allocator_arg_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__utility/piecewise_construct.h:
 
+/opt/homebrew/include/glm/detail/type_mat4x3.hpp:
+
+/opt/homebrew/include/glm/detail/type_mat3x3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__utility/pair.h:
+
+/opt/homebrew/include/glm/ext/vector_float3.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/promote.h:
 
@@ -2375,6 +2918,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__utility/exception_guard.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/format:
+
+/opt/homebrew/include/glm/detail/type_mat3x2.inl:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__utility/declval.h:
 
@@ -2417,6 +2962,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/rank.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/errno.h:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/cfloat:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__atomic/atomic_base.h:
 
@@ -2508,6 +3055,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_member_function_pointer.h:
 
+/opt/homebrew/include/glm/geometric.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_fundamental.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/half_positive.h:
@@ -2537,6 +3086,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_class.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_base_of.h:
+
+/opt/homebrew/include/glm/detail/type_mat2x4.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_assignable.h:
 
@@ -2652,6 +3203,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__std_mbstate_t.h:
 
+/opt/homebrew/include/glm/ext/matrix_transform.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_equality_comparable.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__ranges/subrange.h:
@@ -2736,6 +3289,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/add_const.h:
 
+/opt/homebrew/include/glm/simd/platform.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__bit/byteswap.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/underlying_type.h:
@@ -2751,6 +3306,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/inttypes.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/cwchar:
+
+/opt/homebrew/include/glm/ext/vector_bool4_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__concepts/assignable.h:
 
@@ -2772,6 +3329,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__math/inverse_trigonometric_functions.h:
 
+/opt/homebrew/include/glm/gtc/constants.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__math/gamma.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__tuple/sfinae_helpers.h:
@@ -2782,17 +3341,25 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__math/exponential_functions.h:
 
+/opt/homebrew/include/glm/gtc/vec1.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__math/copysign.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/can_extract_key.h:
 
+/opt/homebrew/include/glm/mat2x4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__memory/destruct_n.h:
+
+/opt/homebrew/include/glm/ext/quaternion_float_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__math/abs.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_fill_n.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__locale_dir/locale_base_api/bsd_locale_defaults.h:
+
+/opt/homebrew/include/glm/detail/_vectorize.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__locale:
 
@@ -2812,6 +3379,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/reverse_iterator.h:
 
+/opt/homebrew/include/glm/detail/func_common.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/variant:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/reverse_access.h:
@@ -2822,6 +3391,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/projected.h:
 
+/opt/homebrew/include/glm/ext/matrix_double3x2_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/ostreambuf_iterator.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_partition_point.h:
@@ -2829,6 +3400,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_volatile.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/next.h:
+
+/opt/homebrew/include/glm/ext/vector_double1.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__filesystem/path.h:
 
@@ -2839,6 +3412,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/concepts.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/insert_iterator.h:
+
+/opt/homebrew/include/glm/detail/func_exponential.inl:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/remove_const.h:
 
@@ -2872,6 +3447,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/back_insert_iterator.h:
 
+/opt/homebrew/include/glm/ext/matrix_double3x3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__ranges/view_interface.h:
 
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_blendmode.h:
@@ -2879,6 +3456,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/advance.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__system_error/error_code.h:
+
+/opt/homebrew/include/glm/detail/type_mat3x4.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/access.h:
 
@@ -2904,6 +3483,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__fwd/subrange.h:
 
+/opt/homebrew/include/glm/ext/quaternion_geometric.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__atomic/aliases.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__fwd/sstream.h:
@@ -2921,6 +3502,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__fwd/fstream.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__fwd/array.h:
+
+/opt/homebrew/include/glm/ext/matrix_float2x4.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__format/formatter_tuple.h:
 
@@ -2941,6 +3524,10 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__functional/reference_wrapper.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__functional/ranges_operations.h:
+
+/opt/homebrew/include/glm/ext/quaternion_transform.hpp:
+
+/opt/homebrew/include/glm/detail/func_matrix.inl:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__functional/mem_fun_ref.h:
 
@@ -3104,6 +3691,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__utility/no_destroy.h:
 
+/opt/homebrew/include/glm/ext/vector_float3_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__concepts/destructible.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__concepts/common_reference_with.h:
@@ -3144,6 +3733,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__compare/is_eq.h:
 
+/opt/homebrew/include/glm/ext/matrix_float3x3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__compare/compare_three_way_result.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__compare/compare_partial_order_fallback.h:
@@ -3158,7 +3749,11 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__chrono/high_resolution_clock.h:
 
+/opt/homebrew/include/glm/matrix.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_nothrow_assignable.h:
+
+/opt/homebrew/include/glm/ext/matrix_float2x3_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__format/formatter_pointer.h:
 
@@ -3204,6 +3799,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__bit/has_single_bit.h:
 
+/opt/homebrew/include/glm/ext/vector_uint3_sized.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/find_segment_if.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__bit/countl.h:
@@ -3227,6 +3824,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/inplace_merge.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__atomic/fence.h:
+
+/opt/homebrew/include/glm/gtc/quaternion.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__memory/ranges_construct_at.h:
 
@@ -3252,6 +3851,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__compare/compare_weak_order_fallback.h:
 
+/opt/homebrew/include/glm/detail/type_mat2x4.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__bit/popcount.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare_three_way.h:
@@ -3266,15 +3867,23 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__concepts/invocable.h:
 
+/opt/homebrew/include/glm/detail/func_packing.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/unwrap_iter.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/unique.h:
+
+/opt/homebrew/include/glm/detail/type_mat2x3.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_search.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/merge.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__format/format_args.h:
+
+/opt/homebrew/include/glm/ext/quaternion_float.hpp:
+
+/opt/homebrew/include/glm/ext/matrix_double2x2.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_is_heap_until.h:
 
@@ -3438,6 +4047,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__format/format_arg_store.h:
 
+/opt/homebrew/include/glm/detail/type_mat4x2.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_floating_point.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_partition_copy.h:
@@ -3449,6 +4060,8 @@ sdl_test.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__bit/bit_log2.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_find.h:
+
+/opt/homebrew/include/glm/integer.hpp:
 
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_mutex.h:
 
@@ -3472,6 +4085,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/replace.h:
 
+/opt/homebrew/include/glm/ext/quaternion_transform.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_is_permutation.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__math/hyperbolic_functions.h:
@@ -3480,9 +4095,13 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/iter_swap.h:
 
+/opt/homebrew/include/glm/detail/type_mat2x2.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_mismatch.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/cwctype:
+
+/opt/homebrew/include/glm/gtc/type_ptr.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__atomic/atomic.h:
 
@@ -3528,6 +4147,8 @@ sdl_test.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_wctype.h:
 
+/opt/homebrew/include/glm/gtc/constants.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/in_found_result.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/generate.h:
@@ -3558,6 +4179,8 @@ is_symmetrical.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_types/_nl_item.h:
 
+/opt/homebrew/include/glm/ext/vector_double4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__format/format_arg.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_for_each_n.h:
@@ -3579,6 +4202,8 @@ is_symmetrical.cpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_copy_if.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/pstl_backends/cpu_backends/merge.h:
+
+/opt/homebrew/include/glm/mat4x3.hpp:
 
 /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2/SDL_touch.h:
 
@@ -3628,6 +4253,8 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/common_type.h:
 
+/opt/homebrew/include/glm/detail/type_mat3x3.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/alloca.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/partial_sort_copy.h:
@@ -3637,6 +4264,8 @@ sdl_test.cpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/pstl_sort.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/count_if.h:
+
+/opt/homebrew/include/glm/detail/type_mat3x4.inl:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/search_n.h:
 
@@ -3668,6 +4297,8 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_count_if.h:
 
+/opt/homebrew/include/glm/ext/matrix_clip_space.inl:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_mode_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__config_site:
@@ -3692,6 +4323,10 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/pstl_equal.h:
 
+/opt/homebrew/include/glm/detail/type_vec4.inl:
+
+/opt/homebrew/include/glm/detail/type_mat2x2.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_pthread/_pthread_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/min.h:
@@ -3702,6 +4337,8 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__mbstate_t.h:
 
+/opt/homebrew/include/glm/ext/vector_int4_sized.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/pstl_backends/cpu_backends/fill.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/__endian.h:
@@ -3709,6 +4346,8 @@ sdl_test.cpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/unordered_map:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/minmax_element.h:
+
+/opt/homebrew/include/glm/ext/matrix_double2x2_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/arm/endian.h:
 
@@ -3728,9 +4367,13 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/partition_copy.h:
 
+/opt/homebrew/include/glm/ext/vector_double4_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__concepts/regular.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/lexicographical_compare.h:
+
+/opt/homebrew/include/glm/ext/quaternion_relational.inl:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/remove_copy_if.h:
 
@@ -3824,11 +4467,15 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_is_partitioned.h:
 
+/opt/homebrew/include/glm/trigonometric.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/iterator_operations.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__iterator/wrap_iter.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_find_if_not.h:
+
+/opt/homebrew/include/glm/ext/matrix_float3x4.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/pstl_stable_sort.h:
 
@@ -3862,6 +4509,8 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_copy.h:
 
+/opt/homebrew/include/glm/ext/vector_float4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_wchar.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/find_if_not.h:
@@ -3878,6 +4527,8 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/count.h:
 
+/opt/homebrew/include/glm/ext/matrix_double2x3_precision.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/partition.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/is_sorted_until.h:
@@ -3889,6 +4540,8 @@ sdl_test.cpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/pstl_backends/cpu_backends/libdispatch.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__atomic/atomic_init.h:
+
+/opt/homebrew/include/glm/ext/vector_uint4.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__ranges/data.h:
 
@@ -3906,13 +4559,19 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_types/_uint16_t.h:
 
+/opt/homebrew/include/glm/ext/quaternion_relational.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/copy_backward.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_signed_integer.h:
 
+/opt/homebrew/include/glm/ext/matrix_float4x3.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_move_assignable.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/max.h:
+
+/opt/homebrew/include/glm/detail/type_vec2.inl:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/equal.h:
 
@@ -3925,6 +4584,8 @@ sdl_test.cpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__fwd/bit_reference.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/pstl_find.h:
+
+/opt/homebrew/include/glm/ext/vector_float1.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__memory/concepts.h:
 
@@ -3964,6 +4625,8 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/binary_search.h:
 
+/opt/homebrew/include/glm/ext/vector_int1_sized.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__utility/cmp.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__filesystem/copy_options.h:
@@ -4002,6 +4665,8 @@ sdl_test.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__concepts/same_as.h:
 
+/opt/homebrew/include/glm/mat3x4.hpp:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__charconv/to_chars_integral.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_trivially_copy_constructible.h:
@@ -4033,6 +4698,8 @@ sdl_test.cpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/arm/_limits.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/is_member_pointer.h:
+
+/opt/homebrew/include/glm/ext/matrix_double4x3_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__fwd/ios.h:
 
@@ -4099,6 +4766,8 @@ sdl_test.cpp:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/includes.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__math/hypot.h:
+
+/opt/homebrew/include/glm/ext/matrix_float3x2_precision.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_strings.h:
 

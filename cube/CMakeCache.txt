@@ -427,6 +427,9 @@ WrapOpenGL_AGL:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/
 //The directory containing a CMake configuration file for boost_headers.
 boost_headers_DIR:PATH=/opt/homebrew/lib/cmake/boost_headers-1.86.0
 
+//The directory containing a CMake configuration file for glm.
+glm_DIR:PATH=/opt/homebrew/share/glm
+
 
 ########################
 # INTERNAL cache entries

@@ -2265,7 +2265,10 @@ CGAL_Qt6_moc_and_resources_autogen/timestamp: /Library/Developer/CommandLineTool
   /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake \
   /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake \
   /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake \
-  /opt/homebrew/share/cmake/Modules/SelectLibraryConfigurations.cmake
+  /opt/homebrew/share/cmake/Modules/SelectLibraryConfigurations.cmake \
+  /opt/homebrew/share/glm/glmConfig-release.cmake \
+  /opt/homebrew/share/glm/glmConfig.cmake \
+  /opt/homebrew/share/glm/glmConfigVersion.cmake
 
 CMakeFiles/CGAL_Qt6_moc_and_resources.dir/CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.cpp.o: CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
@@ -4749,10 +4752,6 @@ qrc_CGAL.cpp:
 
 /opt/homebrew/lib/QtCore.framework/Headers/qdiriterator.h:
 
-/opt/homebrew/include/boost/type_traits/conjunction.hpp:
-
-/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h:
-
 /opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h:
 
 /opt/homebrew/lib/QtCore.framework/Headers/qcontainerfwd.h:
@@ -6081,8 +6080,6 @@ CGAL_Qt6_moc_and_resources_autogen/5XEOVZY5EI/moc_GraphicsItem.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__cxxabi_config.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/arm/_mcontext.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/arm/_limits.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/alloca.h:
@@ -6126,6 +6123,16 @@ CGAL_Qt6_moc_and_resources_autogen/5XEOVZY5EI/moc_GraphicsItem.cpp:
 /opt/homebrew/lib/QtOpenGL.framework/Headers/qopenglvertexarrayobject.h:
 
 CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.cpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/arm/_mcontext.h:
+
+/opt/homebrew/Cellar/qt/6.7.3/lib/QtWidgets.framework/Versions/A/Headers/qcheckbox.h:
+
+/opt/homebrew/share/glm/glmConfigVersion.cmake:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/swap_ranges.h:
+
+/opt/homebrew/share/glm/glmConfig.cmake:
 
 /opt/homebrew/include/boost/predef/library/std/sgi.h:
 
@@ -8925,8 +8932,6 @@ icons/Input.qrc:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_int8_t.h:
 
-/opt/homebrew/Cellar/qt/6.7.3/lib/QtWidgets.framework/Versions/A/Headers/qcheckbox.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/find_if.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/sys/_types/_int64_t.h:
@@ -9767,6 +9772,10 @@ icons/Triangulation_2.qrc:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__compare/strong_order.h:
 
+/opt/homebrew/lib/QtCore.framework/Headers/qdebug.h:
+
+/opt/homebrew/include/boost/type_traits/conjunction.hpp:
+
 /opt/homebrew/lib/cmake/Qt6Core/Qt6QDarwinCameraPermissionPluginTargets-release.cmake:
 
 /opt/homebrew/Cellar/qt/6.7.3/lib/QtCore.framework/Versions/A/Headers/qeasingcurve.h:
@@ -10146,6 +10155,8 @@ icons/Triangulation_2.qrc:
 /opt/homebrew/Cellar/boost/1.86.0_2/include/boost/predef/compiler.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__ranges/view_interface.h:
+
+/opt/homebrew/share/glm/glmConfig-release.cmake:
 
 /opt/homebrew/lib/QtGui.framework/Headers/QCursor:
 
@@ -10978,8 +10989,6 @@ icons/Triangulation_2.qrc:
 /opt/homebrew/Cellar/boost/1.86.0_2/include/boost/predef/architecture/superh.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/is_heap.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/swap_ranges.h:
 
 /opt/homebrew/Cellar/boost/1.86.0_2/include/boost/preprocessor/detail/auto_rec.hpp:
 

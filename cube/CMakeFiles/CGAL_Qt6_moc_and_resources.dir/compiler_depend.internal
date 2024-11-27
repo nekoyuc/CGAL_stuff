@@ -2267,6 +2267,9 @@
  /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake
  /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake
  /opt/homebrew/share/cmake/Modules/SelectLibraryConfigurations.cmake
+ /opt/homebrew/share/glm/glmConfig-release.cmake
+ /opt/homebrew/share/glm/glmConfig.cmake
+ /opt/homebrew/share/glm/glmConfigVersion.cmake
 
 CMakeFiles/CGAL_Qt6_moc_and_resources.dir/CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.cpp.o
  /Users/nekoyuc/src/CGAL_stuff/cube/CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.cpp
