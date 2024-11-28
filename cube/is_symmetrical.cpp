@@ -79,6 +79,10 @@ public:
         z = m_z;
     }
 
+    int size() {
+        return m_x * m_y * m_z;
+    }
+
 private:
     Cell* m_cells = nullptr;
     int m_x = 0;
@@ -154,6 +158,8 @@ class Plane{ //
         }
 };
 
+// the next function is more memory efficient than this one because 1. lack of dynamic memory allocation 2. lack of copying
+/*
 std::vector<int> pointToIndex(const Point& p, const Point& min, const float& dx, const float& dy, const float& dz) {
     std::vector<int> index(3);
     index[0] = static_cast<int>(std::floor((p.m_x - min.m_x) / dx));
@@ -161,6 +167,7 @@ std::vector<int> pointToIndex(const Point& p, const Point& min, const float& dx,
     index[2] = static_cast<int>(std::floor((p.m_z - min.m_z) / dz));
     return index;
 }
+*/
 
 void pointToIndex(const Point& p, const Point& min, const float& dx, const float& dy, const float& dz, int& x, int& y, int& z) {
     x = static_cast<int>(std::floor((p.m_x - min.m_x) / dx));
@@ -247,6 +254,8 @@ void calculateBoundingBox(Mesh& mesh) {
     }
 }
 
+// function not used
+/*
 Point centroid(const Mesh& mesh) {
     float x = 0;
     float y = 0;
@@ -261,7 +270,11 @@ Point centroid(const Mesh& mesh) {
     z /= mesh.m_vertices.size();
     return Point(x, y, z);
 }
+*/
 
+
+                
+/*
 Point mirroredPoint(const Point& p, const Plane& plane) {
     float normal_length = sqrt(plane.m_normal.m_x * plane.m_normal.m_x +
                                 plane.m_normal.m_y * plane.m_normal.m_y +
@@ -278,8 +291,24 @@ Point mirroredPoint(const Point& p, const Plane& plane) {
                      p.m_z - 2 * d * normalized_normal.m_z);
     return mirrored_p;
 }
+*/
 
+void mirroredPoint(const Point& p, const Plane& plane, Point& mirrored_p) {
+    float normal_length = sqrt(plane.m_normal.m_x * plane.m_normal.m_x +
+                                plane.m_normal.m_y * plane.m_normal.m_y +
+                                plane.m_normal.m_z * plane.m_normal.m_z);
+    float normalized_x = plane.m_normal.m_x / normal_length;
+    float normalized_y = plane.m_normal.m_y / normal_length;
+    float normalized_z = plane.m_normal.m_z / normal_length;
+    float d = (p.m_x - plane.m_points[0].m_x) * normalized_x +
+              (p.m_y - plane.m_points[0].m_y) * normalized_y +
+              (p.m_z - plane.m_points[0].m_z) * normalized_z;
+    mirrored_p.m_x = p.m_x - 2 * d * normalized_x;
+    mirrored_p.m_y = p.m_y - 2 * d * normalized_y;
+    mirrored_p.m_z = p.m_z - 2 * d * normalized_z;
+}
 
+/*
 class Cell{
     public:
         Cell() : taken(false), paired(false) {}
@@ -287,7 +316,9 @@ class Cell{
         bool taken;
         bool paired;
 };
+*/
 
+/*
 std::map<std::string, Cell> createCellMap(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
     std::map<std::string, Cell> cellMap;
     int numX = static_cast<int>(std::ceil((max.m_x - min.m_x) / dx));
@@ -313,16 +344,18 @@ std::map<std::string, Cell> createCellMap(const Point& min, const Point& max, co
     }           
     return cellMap;
 }
+*/
 
-std::shared_ptr<CellGrid> createCellMap(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
+std::shared_ptr<CellGrid> createCellGrid(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
     std::shared_ptr<CellGrid> cg = std::make_shared<CellGrid>(static_cast<int>(std::ceil((max.m_x - min.m_x) / dx)),
                       static_cast<int>(std::ceil((max.m_y - min.m_y) / dy)),
                       static_cast<int>(std::ceil((max.m_z - min.m_z) / dz)));
-    return cellGrid;
+    return cg;
 }
-
+// shared_ptr is slightly slightly slightly less efficient than a pointer, automatically deletes memory when it goes out of scope
 
 void symmetryMappingGrid(const Plane& plane, const Mesh& mesh, const std::shared_ptr<CellGrid>& cellGrid, const float dx, const float dy, const float dz) {
+    // todo: get rid of splitMesh
     Mesh outMesh1(100000);
     Mesh outMesh2(100000);
     splitMesh(plane, mesh, outMesh1, outMesh2);
@@ -339,10 +372,10 @@ void symmetryMappingGrid(const Plane& plane, const Mesh& mesh, const std::shared
             std::cout << "Cell not found." << std::endl;
             continue;
         }
-        if (cell->paired == true) {
+        if (cell->m_paired == true) {
             continue;
         } else {
-            cell->taken = true;
+            cell->m_taken = true;
         }
     }
 
@@ -354,11 +387,14 @@ void symmetryMappingGrid(const Plane& plane, const Mesh& mesh, const std::shared
         pointToIndex(outMesh2.m_vertices[i], mesh.m_boundingBox[0], dx, dy, dz, x, y, z); // based on bounding box
         Cell* cell = cellGrid->get(x, y, z);
         if (cell != nullptr) {
-            if (cell->paired == true) {
+            if (cell->m_paired == true) {
                 continue;
             } else {
-                cell->second.taken = true;
-                Point mirrored_p = mirroredPoint(outMesh2.m_vertices[i], plane);
+                cell->m_taken = true;
+                Point mirrored_p(0,0,0);
+                mirroredPoint(outMesh2.m_vertices[i], plane, mirrored_p);
+                
+                //Point mirrored_p = mirroredPoint(outMesh2.m_vertices[i], plane);
                 //std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz); // based on full bounding box
                 int x2 = 0;
                 int y2 = 0;
@@ -366,9 +402,9 @@ void symmetryMappingGrid(const Plane& plane, const Mesh& mesh, const std::shared
                 pointToIndex(mirrored_p, mesh.m_boundingBox[0], dx, dy, dz, x2, y2, z2); // based on bounding box
                 Cell* cellMirrored = cellGrid->get(x2, y2, z2);
                 if (cellMirrored != nullptr) {
-                    if (cellMirrored->taken == true) {
-                        cell->paired = true;
-                        cellMirrored->paired = true;
+                    if (cellMirrored->m_taken == true) {
+                        cell->m_paired = true;
+                        cellMirrored->m_paired = true;
                     }
                 } else {
                     continue;
@@ -388,6 +424,7 @@ void symmetryMappingGrid(const Plane& plane, const Mesh& mesh, const std::shared
     }
 }
 
+/*
 void symmetryMapping(const Plane& plane, const Mesh& mesh, std::map<std::string, Cell>& cellMap, const float dx, const float dy, const float dz) {
     Mesh outMesh1(100000);
     Mesh outMesh2(100000);
@@ -422,7 +459,10 @@ void symmetryMapping(const Plane& plane, const Mesh& mesh, std::map<std::string,
                 continue;
             } else {
                 it->second.taken = true;
-                Point mirrored_p = mirroredPoint(outMesh2.m_vertices[i], plane);
+                Point mirrored_p(0,0,0);
+                mirroredPoint(outMesh2.m_vertices[i], plane, mirrored_p);
+
+                //Point mirrored_p = mirroredPoint(outMesh2.m_vertices[i], plane);
                 //std::vector<int> index_mirrored = pointToIndex(mirrored_p, fullBoundingBox1, dx, dy, dz); // based on full bounding box
                 std::vector<int> index_mirrored = pointToIndex(mirrored_p, mesh.m_boundingBox[0], dx, dy, dz); // based on bounding box
                 auto it_mirrored = cellMap.find(std::to_string(index_mirrored[0]) + "_" + std::to_string(index_mirrored[1]) + "_" + std::to_string(index_mirrored[2]));
@@ -449,6 +489,7 @@ void symmetryMapping(const Plane& plane, const Mesh& mesh, std::map<std::string,
     }
 }
 
+
 void evaluateSymmetry(std::map<std::string, Cell>& cellMap, int& numTaken, int& numPaired, float& symmetryScore) {
     for (const auto& pair : cellMap) {
         if (pair.second.taken == true) {
@@ -463,6 +504,7 @@ void evaluateSymmetry(std::map<std::string, Cell>& cellMap, int& numTaken, int& 
     std::cout << "Cells paired: " << numPaired << std::endl;
     std::cout << "Symmetry score: " << symmetryScore << std::endl;
 }
+*/
 
 void evaluateSymmetryCellGrid(const std::shared_ptr<CellGrid>& cellGrid, int& numTaken, int& numPaired, float& symmetryScore) {
     int nx = 0;
@@ -476,10 +518,10 @@ void evaluateSymmetryCellGrid(const std::shared_ptr<CellGrid>& cellGrid, int& nu
             for (int k = 0; k < nz; k++) {
                 Cell* cell = cellGrid->get(i, j, k);
                 if (cell != nullptr) {
-                    if (cell->taken == true) {
+                    if (cell->m_taken == true) {
                         numTaken++;
                     }
-                    if (cell->paired == true) {
+                    if (cell->m_paired == true) {
                         numPaired++;
                     }
                 }
@@ -491,6 +533,8 @@ void evaluateSymmetryCellGrid(const std::shared_ptr<CellGrid>& cellGrid, int& nu
     std::cout << "Cells paired: " << numPaired << std::endl;
     std::cout << "Symmetry score: " << symmetryScore << std::endl;
 }
+
+/*
 void cleanUpCellMap(std::map<std::string, Cell>& cellMap, int& numTaken, int& numPaired, float& symmetryScore) {
     for (auto it = cellMap.begin(); it != cellMap.end(); it++) {
         it->second.taken = false;
@@ -501,6 +545,7 @@ void cleanUpCellMap(std::map<std::string, Cell>& cellMap, int& numTaken, int& nu
     symmetryScore = 0;
     std::cout << "\nCellMap cleaned up." << std::endl;
 }
+*/
 
 void cleanUpCellGrid(const std::shared_ptr<CellGrid>& cellGrid, int& numTaken, int& numPaired, float& symmetryScore) {
     cellGrid->reset();
@@ -532,8 +577,10 @@ int main() {
     float dx = 0.1;
     float dy = 0.1;
     float dz = 0.1;
-    std::map<std::string, Cell> cellMap = createCellMap(mesh.m_boundingBox[0], mesh.m_boundingBox[1], dx, dy, dz); //Bounding box
-    std::cout << "\nNumber of cells: " << cellMap.size() << std::endl;
+    
+    std::shared_ptr<CellGrid> cellGrid = createCellGrid(mesh.m_boundingBox[0], mesh.m_boundingBox[1], dx, dy, dz);
+    //std::map<std::string, Cell> cellMap = createCellMap(mesh.m_boundingBox[0], mesh.m_boundingBox[1], dx, dy, dz); //Bounding box
+    std::cout << "\nNumber of cells: " << cellGrid->size() << std::endl;
 
     // check symmetry
     int numTaken = 0;
@@ -560,9 +607,9 @@ int main() {
         std::cout << "\nPlane's 3 points: " << p1.m_x << ", " << p1.m_y << ", " << p1.m_z << std::endl;
 
         Plane mirrorPlane(p1, p2, p3);
-        cleanUpCellMap(cellMap, numTaken, numPaired, symmetryScore);
-        symmetryMapping(mirrorPlane, mesh, cellMap, dx, dy, dz);
-        evaluateSymmetry(cellMap, numTaken, numPaired, symmetryScore);
+        cleanUpCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
+        symmetryMappingGrid(mirrorPlane, mesh, cellGrid, dx, dy, dz);
+        evaluateSymmetryCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
         
         auto end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed = end - start;
@@ -570,9 +617,9 @@ int main() {
     }
     
     auto start = std::chrono::high_resolution_clock::now();
-    cleanUpCellMap(cellMap, numTaken, numPaired, symmetryScore);
-    symmetryMapping(plane, mesh, cellMap, dx, dy, dz);
-    evaluateSymmetry(cellMap, numTaken, numPaired, symmetryScore);
+    cleanUpCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
+    symmetryMappingGrid(plane, mesh, cellGrid, dx, dy, dz);
+    evaluateSymmetryCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed = end - start;
     std::cout << "Elapsed time: " << elapsed.count() << " s" << std::endl;
