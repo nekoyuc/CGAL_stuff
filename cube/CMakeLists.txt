@@ -11,7 +11,7 @@ find_package(glm REQUIRED)
 
 
 add_executable(cube cube.cpp)
-add_executable(is_symmetrical is_symmetrical.cpp sdl_test.cpp)
+add_executable(is_symmetrical is_symmetrical.cpp sdl_test.cpp cell.cpp geometry.cpp file_processors.cpp operations.cpp)
 target_link_libraries(cube PRIVATE CGAL::CGAL Qt6::Widgets Qt6::OpenGL GLUT::GLUT)
 target_link_libraries(cube PRIVATE CGAL::CGAL Qt6::Widgets Qt6::OpenGL OpenGL::GL)
 

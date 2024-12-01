@@ -192,6 +192,30 @@ CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CGAL_Qt6_moc_and_resources.dir/build.make CMakeFiles/CGAL_Qt6_moc_and_resources.dir/CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.cpp.s
 .PHONY : CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.cpp.s
 
+cell.o: cell.cpp.o
+.PHONY : cell.o
+
+# target to build an object file
+cell.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/cell.cpp.o
+.PHONY : cell.cpp.o
+
+cell.i: cell.cpp.i
+.PHONY : cell.i
+
+# target to preprocess a source file
+cell.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/cell.cpp.i
+.PHONY : cell.cpp.i
+
+cell.s: cell.cpp.s
+.PHONY : cell.s
+
+# target to generate assembly for a file
+cell.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/cell.cpp.s
+.PHONY : cell.cpp.s
+
 cube.o: cube.cpp.o
 .PHONY : cube.o
 
@@ -216,6 +240,54 @@ cube.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cube.dir/build.make CMakeFiles/cube.dir/cube.cpp.s
 .PHONY : cube.cpp.s
 
+file_processors.o: file_processors.cpp.o
+.PHONY : file_processors.o
+
+# target to build an object file
+file_processors.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/file_processors.cpp.o
+.PHONY : file_processors.cpp.o
+
+file_processors.i: file_processors.cpp.i
+.PHONY : file_processors.i
+
+# target to preprocess a source file
+file_processors.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/file_processors.cpp.i
+.PHONY : file_processors.cpp.i
+
+file_processors.s: file_processors.cpp.s
+.PHONY : file_processors.s
+
+# target to generate assembly for a file
+file_processors.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/file_processors.cpp.s
+.PHONY : file_processors.cpp.s
+
+geometry.o: geometry.cpp.o
+.PHONY : geometry.o
+
+# target to build an object file
+geometry.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/geometry.cpp.o
+.PHONY : geometry.cpp.o
+
+geometry.i: geometry.cpp.i
+.PHONY : geometry.i
+
+# target to preprocess a source file
+geometry.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/geometry.cpp.i
+.PHONY : geometry.cpp.i
+
+geometry.s: geometry.cpp.s
+.PHONY : geometry.s
+
+# target to generate assembly for a file
+geometry.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/geometry.cpp.s
+.PHONY : geometry.cpp.s
+
 is_symmetrical.o: is_symmetrical.cpp.o
 .PHONY : is_symmetrical.o
 
@@ -239,6 +311,30 @@ is_symmetrical.s: is_symmetrical.cpp.s
 is_symmetrical.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/is_symmetrical.cpp.s
 .PHONY : is_symmetrical.cpp.s
+
+operations.o: operations.cpp.o
+.PHONY : operations.o
+
+# target to build an object file
+operations.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/operations.cpp.o
+.PHONY : operations.cpp.o
+
+operations.i: operations.cpp.i
+.PHONY : operations.i
+
+# target to preprocess a source file
+operations.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/operations.cpp.i
+.PHONY : operations.cpp.i
+
+operations.s: operations.cpp.s
+.PHONY : operations.s
+
+# target to generate assembly for a file
+operations.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/operations.cpp.s
+.PHONY : operations.cpp.s
 
 qrc_CGAL.o: qrc_CGAL.cpp.o
 .PHONY : qrc_CGAL.o
@@ -375,12 +471,24 @@ help:
 	@echo "... CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.o"
 	@echo "... CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.i"
 	@echo "... CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.s"
+	@echo "... cell.o"
+	@echo "... cell.i"
+	@echo "... cell.s"
 	@echo "... cube.o"
 	@echo "... cube.i"
 	@echo "... cube.s"
+	@echo "... file_processors.o"
+	@echo "... file_processors.i"
+	@echo "... file_processors.s"
+	@echo "... geometry.o"
+	@echo "... geometry.i"
+	@echo "... geometry.s"
 	@echo "... is_symmetrical.o"
 	@echo "... is_symmetrical.i"
 	@echo "... is_symmetrical.s"
+	@echo "... operations.o"
+	@echo "... operations.i"
+	@echo "... operations.s"
 	@echo "... qrc_CGAL.o"
 	@echo "... qrc_CGAL.i"
 	@echo "... qrc_CGAL.s"

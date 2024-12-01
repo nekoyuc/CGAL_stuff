@@ -990,4 +990,8 @@ CMakeFiles/is_symmetrical.dir/is_symmetrical.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_assert.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/_static_assert.h \
   /Users/nekoyuc/src/CGAL_stuff/cube/sdl_test.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl3.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl3.h \
+  /Users/nekoyuc/src/CGAL_stuff/cube/cell.h \
+  /Users/nekoyuc/src/CGAL_stuff/cube/geometry.h \
+  /Users/nekoyuc/src/CGAL_stuff/cube/file_processors.h \
+  /Users/nekoyuc/src/CGAL_stuff/cube/operations.h

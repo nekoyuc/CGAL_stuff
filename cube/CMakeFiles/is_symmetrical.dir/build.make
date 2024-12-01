@@ -100,22 +100,86 @@ CMakeFiles/is_symmetrical.dir/sdl_test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/is_symmetrical.dir/sdl_test.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nekoyuc/src/CGAL_stuff/cube/sdl_test.cpp -o CMakeFiles/is_symmetrical.dir/sdl_test.cpp.s
 
+CMakeFiles/is_symmetrical.dir/cell.cpp.o: CMakeFiles/is_symmetrical.dir/flags.make
+CMakeFiles/is_symmetrical.dir/cell.cpp.o: cell.cpp
+CMakeFiles/is_symmetrical.dir/cell.cpp.o: CMakeFiles/is_symmetrical.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/is_symmetrical.dir/cell.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/is_symmetrical.dir/cell.cpp.o -MF CMakeFiles/is_symmetrical.dir/cell.cpp.o.d -o CMakeFiles/is_symmetrical.dir/cell.cpp.o -c /Users/nekoyuc/src/CGAL_stuff/cube/cell.cpp
+
+CMakeFiles/is_symmetrical.dir/cell.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/is_symmetrical.dir/cell.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nekoyuc/src/CGAL_stuff/cube/cell.cpp > CMakeFiles/is_symmetrical.dir/cell.cpp.i
+
+CMakeFiles/is_symmetrical.dir/cell.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/is_symmetrical.dir/cell.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nekoyuc/src/CGAL_stuff/cube/cell.cpp -o CMakeFiles/is_symmetrical.dir/cell.cpp.s
+
+CMakeFiles/is_symmetrical.dir/geometry.cpp.o: CMakeFiles/is_symmetrical.dir/flags.make
+CMakeFiles/is_symmetrical.dir/geometry.cpp.o: geometry.cpp
+CMakeFiles/is_symmetrical.dir/geometry.cpp.o: CMakeFiles/is_symmetrical.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/is_symmetrical.dir/geometry.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/is_symmetrical.dir/geometry.cpp.o -MF CMakeFiles/is_symmetrical.dir/geometry.cpp.o.d -o CMakeFiles/is_symmetrical.dir/geometry.cpp.o -c /Users/nekoyuc/src/CGAL_stuff/cube/geometry.cpp
+
+CMakeFiles/is_symmetrical.dir/geometry.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/is_symmetrical.dir/geometry.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nekoyuc/src/CGAL_stuff/cube/geometry.cpp > CMakeFiles/is_symmetrical.dir/geometry.cpp.i
+
+CMakeFiles/is_symmetrical.dir/geometry.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/is_symmetrical.dir/geometry.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nekoyuc/src/CGAL_stuff/cube/geometry.cpp -o CMakeFiles/is_symmetrical.dir/geometry.cpp.s
+
+CMakeFiles/is_symmetrical.dir/file_processors.cpp.o: CMakeFiles/is_symmetrical.dir/flags.make
+CMakeFiles/is_symmetrical.dir/file_processors.cpp.o: file_processors.cpp
+CMakeFiles/is_symmetrical.dir/file_processors.cpp.o: CMakeFiles/is_symmetrical.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/is_symmetrical.dir/file_processors.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/is_symmetrical.dir/file_processors.cpp.o -MF CMakeFiles/is_symmetrical.dir/file_processors.cpp.o.d -o CMakeFiles/is_symmetrical.dir/file_processors.cpp.o -c /Users/nekoyuc/src/CGAL_stuff/cube/file_processors.cpp
+
+CMakeFiles/is_symmetrical.dir/file_processors.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/is_symmetrical.dir/file_processors.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nekoyuc/src/CGAL_stuff/cube/file_processors.cpp > CMakeFiles/is_symmetrical.dir/file_processors.cpp.i
+
+CMakeFiles/is_symmetrical.dir/file_processors.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/is_symmetrical.dir/file_processors.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nekoyuc/src/CGAL_stuff/cube/file_processors.cpp -o CMakeFiles/is_symmetrical.dir/file_processors.cpp.s
+
+CMakeFiles/is_symmetrical.dir/operations.cpp.o: CMakeFiles/is_symmetrical.dir/flags.make
+CMakeFiles/is_symmetrical.dir/operations.cpp.o: operations.cpp
+CMakeFiles/is_symmetrical.dir/operations.cpp.o: CMakeFiles/is_symmetrical.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/is_symmetrical.dir/operations.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/is_symmetrical.dir/operations.cpp.o -MF CMakeFiles/is_symmetrical.dir/operations.cpp.o.d -o CMakeFiles/is_symmetrical.dir/operations.cpp.o -c /Users/nekoyuc/src/CGAL_stuff/cube/operations.cpp
+
+CMakeFiles/is_symmetrical.dir/operations.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/is_symmetrical.dir/operations.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/nekoyuc/src/CGAL_stuff/cube/operations.cpp > CMakeFiles/is_symmetrical.dir/operations.cpp.i
+
+CMakeFiles/is_symmetrical.dir/operations.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/is_symmetrical.dir/operations.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/nekoyuc/src/CGAL_stuff/cube/operations.cpp -o CMakeFiles/is_symmetrical.dir/operations.cpp.s
+
 # Object files for target is_symmetrical
 is_symmetrical_OBJECTS = \
 "CMakeFiles/is_symmetrical.dir/is_symmetrical.cpp.o" \
-"CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o"
+"CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o" \
+"CMakeFiles/is_symmetrical.dir/cell.cpp.o" \
+"CMakeFiles/is_symmetrical.dir/geometry.cpp.o" \
+"CMakeFiles/is_symmetrical.dir/file_processors.cpp.o" \
+"CMakeFiles/is_symmetrical.dir/operations.cpp.o"
 
 # External object files for target is_symmetrical
 is_symmetrical_EXTERNAL_OBJECTS =
 
 is_symmetrical: CMakeFiles/is_symmetrical.dir/is_symmetrical.cpp.o
 is_symmetrical: CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o
+is_symmetrical: CMakeFiles/is_symmetrical.dir/cell.cpp.o
+is_symmetrical: CMakeFiles/is_symmetrical.dir/geometry.cpp.o
+is_symmetrical: CMakeFiles/is_symmetrical.dir/file_processors.cpp.o
+is_symmetrical: CMakeFiles/is_symmetrical.dir/operations.cpp.o
 is_symmetrical: CMakeFiles/is_symmetrical.dir/build.make
 is_symmetrical: /opt/homebrew/Cellar/sdl2/2.30.9/lib/libSDL2.dylib
 is_symmetrical: /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework
 is_symmetrical: /opt/homebrew/lib/libglm.dylib
 is_symmetrical: CMakeFiles/is_symmetrical.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable is_symmetrical"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable is_symmetrical"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/is_symmetrical.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
