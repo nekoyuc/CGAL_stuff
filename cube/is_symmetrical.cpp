@@ -194,9 +194,9 @@ void constructPlane(const Point& origin, const Point& distance, PlaneNormal& pla
 }
 
 void pointToIndex(const Point& p, const Point& min, const float& dx, const float& dy, const float& dz, int& x, int& y, int& z) {
-    x = static_cast<int>(std::round((p.m_x - min.m_x) / dx));
-    y = static_cast<int>(std::round((p.m_y - min.m_y) / dy));
-    z = static_cast<int>(std::round((p.m_z - min.m_z) / dz));
+    x = static_cast<int>(std::floor((p.m_x - min.m_x) / dx));
+    y = static_cast<int>(std::floor((p.m_y - min.m_y) / dy));
+    z = static_cast<int>(std::floor((p.m_z - min.m_z) / dz));
 }
 
 void loadOBJ(const std::string& filename, Mesh& mesh) {
@@ -214,11 +214,11 @@ void loadOBJ(const std::string& filename, Mesh& mesh) {
     float z_max = std::numeric_limits<float>::min();
 
     std::string line;
+    
     while (std::getline(file, line)) {
         std::istringstream iss(line);
         std::string prefix;
         iss >> prefix;
-
         if (prefix == "v") {
             float x, y, z;
             iss >> x >> y >> z;
@@ -229,37 +229,31 @@ void loadOBJ(const std::string& filename, Mesh& mesh) {
             if (y > y_max) y_max = y;
             if (z > z_max) z_max = z;
             Point p(x, y, z);
-            mesh.addPoint(p);
-        
-        /*
+            mesh.addPoint(p);       
         } else if (prefix == "f") {
             std::vector<int> face;
-            std::string vertex;
-            while (iss >> vertex) {
-                std::istringstream viss(vertex);
-                int index;
-                viss >> index;
-                face.push_back(index - 1); // OBJ format uses 1-based indexing
-            }
-            mesh.m_faces.push_back(face);
-        }
-        */
-        
-        } else if (prefix == "f") {
-            std::vector<int> face;
+            std::vector<std::string> lineSegments;
             std::istringstream iss(line.substr(2));
+            std::string segment;
             std::string vertex;
-            while (std::getline(iss, vertex, ' ')) {
-                // Extract only the first index
-                size_t slashPos = vertex.find('/');
-                if (slashPos != std::string::npos) {
-                    vertex = vertex.substr(0, slashPos);
-                }
-                face.push_back(std::stoi(vertex) -1); // OBJ indices start from 1
+            
+            while (iss >> segment) {
+                lineSegments.push_back(segment);
             }
+
+            for (const auto& segment : lineSegments) {
+                size_t slashPos = segment.find('/');
+                if (slashPos != std::string::npos) {
+                    vertex = segment.substr(0, slashPos);
+                    face.push_back(std::stoi(vertex) - 1); // OBJ indices start from 1
+                }
+            }
+
             mesh.m_faces.push_back(face);
+
+        } else {
+            continue;
         }
-        
     }
 
     mesh.m_boundingBox[0].m_x = x_min;
@@ -273,29 +267,6 @@ void loadOBJ(const std::string& filename, Mesh& mesh) {
     mesh.m_boundingCenter.m_z = (z_min + z_max) / 2;
     file.close();
 }
-
-/*
-void exportOBJ(const std::string &filename, const std::vector<Vertex> &vertices, const std::vector<GLuint> &indices, const Plane3P &mirrorPlane) {
-    std::ofstream file(filename, std::ios::out | std::ios::trunc);
-    if (!file.is_open()) {
-        std::cerr << "Failed to open file: " << filename << std::endl;
-        return;
-    }
-
-    // Write vertices
-    for (const auto &vertex : vertices) {
-        file << "v " << vertex.position[0] << " " << vertex.position[1] << " " << vertex.position[2] << " " << vertex.color[0] << " " << vertex.color[1] << " " << vertex.color[2] << std::endl;
-    }
-
-    // Write faces
-    for (size_t i = 0; i < indices.size(); i += 3) {
-        file << "f " << indices[i] + 1 << " " << indices[i + 1] + 1 << " " << indices[i + 2] + 1 << " " << indices[i + 3] + 1 << std::endl;
-    }
-
-    file.close();
-    std::cout << "Exported mesh to " << filename << std::endl;
-}
-*/
 
 void exportOBJ(const std::string &filename, const std::vector<Vertex> &vertices, const std::vector<GLuint> &indices, const PlaneNormal &mirrorPlane) {
     std::ofstream file(filename, std::ios::out | std::ios::trunc);
@@ -319,21 +290,17 @@ void exportOBJ(const std::string &filename, const std::vector<Vertex> &vertices,
     v = Point(mirrorPlane.m_normal.m_y * u.m_z - mirrorPlane.m_normal.m_z * u.m_y,
               mirrorPlane.m_normal.m_z * u.m_x  - mirrorPlane.m_normal.m_x * u.m_z,
               mirrorPlane.m_normal.m_x * u.m_y - mirrorPlane.m_normal.m_y * u.m_x);
-
     file << "v " << mirrorPlane.m_coordinate.m_x << " " << mirrorPlane.m_coordinate.m_y << " " << mirrorPlane.m_coordinate.m_z << std::endl;
     file << "v " << mirrorPlane.m_coordinate.m_x + u.m_x << " " << mirrorPlane.m_coordinate.m_y + u.m_y << " " << mirrorPlane.m_coordinate.m_z + u.m_z << std::endl;
     file << "v " << mirrorPlane.m_coordinate.m_x + v.m_x << " " << mirrorPlane.m_coordinate.m_y + v.m_y << " " << mirrorPlane.m_coordinate.m_z + v.m_z << std::endl;
 
     // Write faces
-    for (size_t i = 0; i < indices.size(); i += 3) {
-        file << "f " << indices[i] + 1 << " " << indices[i + 1] + 1 << " " << indices[i + 2] + 1 << " " << indices[i + 3] + 1 << std::endl;
+    for (size_t i = 0; i < indices.size(); i += 4) {
+        file << "f " << indices[i] + 1 << " " << indices[i + 1] + 1 << " " << indices[i + 2] + 1 << " " << indices[i + 3] + 1 << std::endl; // OBJ format uses 1-based indexing
     }
+    file << "f " << vertices.size() + 1 << " " << vertices.size() + 2 << " " << vertices.size() + 3 << std::endl; // Indices for the mirror plane
 
-    file << "f " << vertices.size() + 1 << " " << vertices.size() + 2 << " " << vertices.size() + 3 << std::endl;
-    
-    //file << "v " << mirrorPlane.m_coordinate.m_x << " " << mirrorPlane.m_coordinate.m_y << " " << mirrorPlane.m_coordinate.m_z << std::endl;
     file.close();
-    std::cout << "Exported mesh to " << filename << std::endl;
 }
 
 
@@ -391,6 +358,8 @@ void symmetryMappingGrid(const PlaneNormal& plane, const Mesh& mesh, std::shared
                         numPaired++;
                     }
                 }
+            } else {
+                continue;
             }
         }
     }
@@ -405,7 +374,7 @@ void cleanUpCellGrid(const std::shared_ptr<CellGrid>& cellGrid, int& numTaken, i
     numTaken = 0;
     numPaired = 0;
     symmetryScore = 0;
-    std::cout << "\nCellGrid cleaned up." << std::endl;
+    std::cout << "CellGrid cleaned up." << std::endl;
 }
 
 int main() {
@@ -418,26 +387,26 @@ int main() {
 
     auto step_0 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_step_0 = step_0 - total_start;
-    std::cout << "Step 0 elapsed time: " << elapsed_step_0.count() << " s" << std::endl;
+    std::cout << "Step 0 (importing mesh) elapsed time: " << elapsed_step_0.count() << " s" << std::endl;
 
     std::cout << "\nBounding box: " << mesh.m_boundingBox[0].m_x << ", " << mesh.m_boundingBox[0].m_y << ", " << mesh.m_boundingBox[0].m_z << std::endl;
     std::cout << "Bounding box: " << mesh.m_boundingBox[1].m_x << ", " << mesh.m_boundingBox[1].m_y << ", " << mesh.m_boundingBox[1].m_z << std::endl;
     
     // Create cell map
-    float dx = 0.5;
-    float dy = 0.5;
-    float dz = 0.5;
+    float dx = 0.3;
+    float dy = 0.3;
+    float dz = 0.3;
 
     auto step_1 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_step_1 = step_1 - step_0;
-    std::cout << "Step 1 elapsed time: " << elapsed_step_1.count() << " s" << std::endl;
+    std::cout << "Step 1 (calculating bounding box) elapsed time: " << elapsed_step_1.count() << " s" << std::endl;
     
     std::shared_ptr<CellGrid> cellGrid = createCellGrid(mesh.m_boundingBox[0], mesh.m_boundingBox[1], dx, dy, dz);
     std::cout << "\nNumber of cells: " << cellGrid->size() << std::endl;
 
     auto step_2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed_step_2 = step_2 - step_1;
-    std::cout << "Step 2 elapsed time: " << elapsed_step_2.count() << " s" << std::endl;
+    std::cout << "Step 2 (creating cell grid) elapsed time: " << elapsed_step_2.count() << " s" << std::endl;
 
     // check symmetry
     int numTaken = 0;
@@ -451,28 +420,6 @@ int main() {
     
     for (int i = 0; i < 5; i++) {
         auto start = std::chrono::high_resolution_clock::now();
-
-        /*
-        // Randomly create a Plane
-        float x1 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-        float y1 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-        float z1 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-        Point p1(x1, y1, z1);
-
-        float x2 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-        float y2 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-        float z2 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-        Point p2(x2, y2, z2);
-
-        float x3 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-        float y3 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-        float z3 = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
-        Point p3(x3, y3, z3);
-
-        std::cout << "\nPlane's 3 points: " << p1.m_x << ", " << p1.m_y << ", " << p1.m_z << std::endl;
-
-        Plane3P mirrorPlane(p1, p2, p3);
-        */
 
         // Randomly create a plane coordinate within the bounding box
         float px = mesh.m_boundingBox[0].m_x + static_cast<float>(rand()) / static_cast<float>(RAND_MAX) * (mesh.m_boundingBox[1].m_x - mesh.m_boundingBox[0].m_x);
@@ -488,6 +435,7 @@ int main() {
 
         PlaneNormal mirrorPlaneAlongNormal(planeCoordinate, normal);
         std::cout << "\nPlane's coordinate: " << mirrorPlaneAlongNormal.m_coordinate.m_x << ", " << mirrorPlaneAlongNormal.m_coordinate.m_y << ", " << mirrorPlaneAlongNormal.m_coordinate.m_z << std::endl;
+        std::cout << "Plane's normal: " << mirrorPlaneAlongNormal.m_normal.m_x << ", " << mirrorPlaneAlongNormal.m_normal.m_y << ", " << mirrorPlaneAlongNormal.m_normal.m_z << std::endl;
         cleanUpCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
         symmetryMappingGrid(mirrorPlaneAlongNormal, mesh, cellGrid, dx, dy, dz, numTaken, numPaired, symmetryScore);
         
@@ -518,8 +466,6 @@ int main() {
         }
         exportOBJ("output_" + std::to_string(outputNum) + ".obj", meshVertices, meshIndices, mirrorPlaneAlongNormal);
         //visualize_mesh(meshVertices, meshIndices);
-        
-        //exportOBJ("output_" + std::to_string(outputNum) + ".obj", meshVertices, meshIndices, mirrorPlane);
         outputNum++;
 
         auto loop2 = std::chrono::high_resolution_clock::now();
@@ -529,11 +475,6 @@ int main() {
     }
     
     // First manual mirror plane
-    // Generate a plane
-    //Point pa1(0, 0, 0);
-    //Point pa2(2, 0, 0);
-    //Point pa3(0, 2, 0);
-    //Plane3P plane1(pa1, pa2, pa3);
     Point zero(0, 0, 0);
     Point normal1(1, 0, 0);
     PlaneNormal plane1(zero, normal1);
@@ -570,12 +511,9 @@ int main() {
 
     exportOBJ("output_x.obj", meshVertices, meshIndices, plane1);
 
+
+
     // Second manual mirror mesh
-    // Generate a plane
-    // Point pb1(0, 0, 0);
-    // Point pb2(0, 0, 2);
-    // Point pb3(0, 2, 0);
-    // Plane3P plane2(pb1, pb2, pb3);
     Point normal2(0, 0, 1);
     PlaneNormal plane2(zero, normal2);
     std::cout << "\nNormal of plane: " << plane2.m_normal.m_x << ", " << plane2.m_normal.m_y << ", " << plane2.m_normal.m_z << std::endl;
@@ -587,10 +525,6 @@ int main() {
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed2 = end2 - start2;
     std::cout << "Elapsed time: " << elapsed2.count() << " s" << std::endl;
-
-    auto total_end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> total_elapsed = total_end - total_start;
-    std::cout << "\n\nTotal elapsed time: " << total_elapsed.count() << " s" << std::endl;
 
     meshVertices.clear();
     meshIndices.clear();
@@ -614,6 +548,10 @@ int main() {
     }
 
     exportOBJ("output_y.obj", meshVertices, meshIndices, plane2);
+
+    auto total_end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> total_elapsed = total_end - total_start;
+    std::cout << "\n\nTotal elapsed time: " << total_elapsed.count() << " s" << std::endl;
     
     return 0;
 }

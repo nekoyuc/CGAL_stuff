@@ -71,7 +71,7 @@ CMakeFiles/CGAL_Qt6_moc_and_resources_autogen: CGAL_Qt6_moc_and_resources_autoge
 CGAL_Qt6_moc_and_resources_autogen/timestamp: /opt/homebrew/share/qt/libexec/moc
 CGAL_Qt6_moc_and_resources_autogen/timestamp: CMakeFiles/CGAL_Qt6_moc_and_resources_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC for target CGAL_Qt6_moc_and_resources"
-	/opt/homebrew/bin/cmake -E cmake_autogen /Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/CGAL_Qt6_moc_and_resources_autogen.dir/AutogenInfo.json ""
+	/opt/homebrew/bin/cmake -E cmake_autogen /Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/CGAL_Qt6_moc_and_resources_autogen.dir/AutogenInfo.json Debug
 	/opt/homebrew/bin/cmake -E touch /Users/nekoyuc/src/CGAL_stuff/cube/CGAL_Qt6_moc_and_resources_autogen/timestamp
 
 CMakeFiles/CGAL_Qt6_moc_and_resources_autogen.dir/codegen:
