@@ -1,6 +1,8 @@
 /Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/CGAL_Qt6_moc_and_resources.dir
 /Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/cube.dir
 /Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/is_symmetrical.dir
+/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/test.dir
+/Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/simulated_annealing_symmetry.dir
 /Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/edit_cache.dir
 /Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/rebuild_cache.dir
 /Users/nekoyuc/src/CGAL_stuff/cube/CMakeFiles/CGAL_Qt6_moc_and_resources_autogen.dir

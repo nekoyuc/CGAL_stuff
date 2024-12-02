@@ -56,6 +56,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/opt/homebrew/lib/cmake/CGAL/FindGMP.cmake"
   "/opt/homebrew/lib/cmake/CGAL/FindGMPXX.cmake"
   "/opt/homebrew/lib/cmake/CGAL/FindMPFR.cmake"
+  "/opt/homebrew/lib/cmake/Matplot++/Matplot++Config.cmake"
+  "/opt/homebrew/lib/cmake/Matplot++/Matplot++ConfigVersion.cmake"
+  "/opt/homebrew/lib/cmake/Matplot++/Matplot++Targets-release.cmake"
+  "/opt/homebrew/lib/cmake/Matplot++/Matplot++Targets.cmake"
   "/opt/homebrew/lib/cmake/Qt6/Qt6Config.cmake"
   "/opt/homebrew/lib/cmake/Qt6/Qt6ConfigExtras.cmake"
   "/opt/homebrew/lib/cmake/Qt6/Qt6ConfigVersion.cmake"
@@ -437,5 +441,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/CGAL_Qt6_moc_and_resources.dir/DependInfo.cmake"
   "CMakeFiles/cube.dir/DependInfo.cmake"
   "CMakeFiles/is_symmetrical.dir/DependInfo.cmake"
+  "CMakeFiles/test.dir/DependInfo.cmake"
+  "CMakeFiles/simulated_annealing_symmetry.dir/DependInfo.cmake"
   "CMakeFiles/CGAL_Qt6_moc_and_resources_autogen.dir/DependInfo.cmake"
   )

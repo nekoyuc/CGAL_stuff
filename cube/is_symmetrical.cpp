@@ -101,7 +101,11 @@ int main() {
         std::cout << "\nPlane's coordinate: " << mirrorPlaneAlongNormal.m_coordinate.m_x << ", " << mirrorPlaneAlongNormal.m_coordinate.m_y << ", " << mirrorPlaneAlongNormal.m_coordinate.m_z << std::endl;
         std::cout << "Plane's normal: " << mirrorPlaneAlongNormal.m_normal.m_x << ", " << mirrorPlaneAlongNormal.m_normal.m_y << ", " << mirrorPlaneAlongNormal.m_normal.m_z << std::endl;
         cleanUpCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
+        std::cout << "CellGrid cleaned up." << std::endl;
         symmetryMappingGrid(mirrorPlaneAlongNormal, mesh, cellGrid, dx, dy, dz, numTaken, numPaired, symmetryScore);
+        std::cout << "Cells taken: " << numTaken << std::endl;
+        std::cout << "Cells paired: " << numPaired << std::endl;
+        std::cout << "Symmetry score: " << symmetryScore << std::endl;
         
         auto loop1 = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> elapsed_loop1 = loop1 - start;
@@ -146,7 +150,11 @@ int main() {
 
     auto start1 = std::chrono::high_resolution_clock::now();
     cleanUpCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
+    std::cout << "CellGrid cleaned up." << std::endl;
     symmetryMappingGrid(plane1, mesh, cellGrid, dx, dy, dz, numTaken, numPaired, symmetryScore);
+    std::cout << "Cells taken: " << numTaken << std::endl;
+    std::cout << "Cells paired: " << numPaired << std::endl;
+    std::cout << "Symmetry score: " << symmetryScore << std::endl;
     //evaluateSymmetryCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
     auto end1 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed1 = end1 - start1;
@@ -184,7 +192,11 @@ int main() {
 
     auto start2 = std::chrono::high_resolution_clock::now();
     cleanUpCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
+    std::cout << "CellGrid cleaned up." << std::endl;
     symmetryMappingGrid(plane2, mesh, cellGrid, dx, dy, dz, numTaken, numPaired, symmetryScore);
+    std::cout << "Cells taken: " << numTaken << std::endl;
+    std::cout << "Cells paired: " << numPaired << std::endl;
+    std::cout << "Symmetry score: " << symmetryScore << std::endl;
     //evaluateSymmetryCellGrid(cellGrid, numTaken, numPaired, symmetryScore);
     auto end2 = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed2 = end2 - start2;

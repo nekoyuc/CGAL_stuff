@@ -4,7 +4,7 @@
 # compile CXX with /Library/Developer/CommandLineTools/usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/nekoyuc/src/CGAL_stuff/cube/is_symmetrical -I/opt/homebrew/Cellar/sdl2/2.30.9/include -isystem /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2 -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks -isystem /opt/homebrew/include
+CXX_INCLUDES = -I/Users/nekoyuc/src/CGAL_stuff/cube/is_symmetrical -I/opt/homebrew/Cellar/sdl2/2.30.9/include -I/Users/nekoyuc/src/CGAL_stuff/cube/simulated_annealing_symmetry -isystem /opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2 -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks -isystem /opt/homebrew/include
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk -mmacosx-version-min=14.6
 

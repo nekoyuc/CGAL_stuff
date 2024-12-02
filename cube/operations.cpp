@@ -1,13 +1,5 @@
 #include "operations.h"
 
-void constructPlane(const Point& origin, const Point& distance, PlaneNormal& plane) {
-    Point planeCoordinate = Point(origin.m_x + distance.m_x, origin.m_y + distance.m_y, origin.m_z + distance.m_z);
-    float normalLength = sqrt(distance.m_x * distance.m_x + distance.m_y * distance.m_y + distance.m_z * distance.m_z);
-    Point normal = Point(distance.m_x / normalLength, distance.m_y / normalLength, distance.m_z / normalLength);
-    plane.m_coordinate = planeCoordinate;
-    plane.m_normal = normal;
-}
-
 void pointToIndex(const Point& p, const Point& min, const float& dx, const float& dy, const float& dz, int& x, int& y, int& z) {
     x = static_cast<int>(std::floor((p.m_x - min.m_x) / dx));
     y = static_cast<int>(std::floor((p.m_y - min.m_y) / dy));
@@ -22,14 +14,6 @@ void mirroredPoint(const Point& p, const Plane3P& plane, Point& mirrored_p) {
     mirrored_p.m_y = p.m_y - 2 * d * plane.m_normal.m_y;
     mirrored_p.m_z = p.m_z - 2 * d * plane.m_normal.m_z;
 }
-
-std::shared_ptr<CellGrid> createCellGrid(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz) {
-    std::shared_ptr<CellGrid> cg = std::make_shared<CellGrid>(static_cast<int>(std::ceil((max.m_x - min.m_x) / dx)),
-                      static_cast<int>(std::ceil((max.m_y - min.m_y) / dy)),
-                      static_cast<int>(std::ceil((max.m_z - min.m_z) / dz)));
-    return cg;
-}
-// shared_ptr is slightly slightly slightly less efficient than a pointer, automatically deletes memory when it goes out of scope
 
 void mirroredPointAlongPlaneNormal(const Point& p, const PlaneNormal& Plane, Point& mirrored_p) {
     float d = (p.m_x - Plane.m_coordinate.m_x) * Plane.m_normal.m_x +
@@ -74,9 +58,6 @@ void symmetryMappingGrid(const PlaneNormal& plane, const Mesh& mesh, std::shared
         }
     }
     symmetryScore = static_cast<float>(numPaired) / static_cast<float>(numTaken);
-    std::cout << "Cells taken: " << numTaken << std::endl;
-    std::cout << "Cells paired: " << numPaired << std::endl;
-    std::cout << "Symmetry score: " << symmetryScore << std::endl;
 }
 
 void cleanUpCellGrid(const std::shared_ptr<CellGrid>& cellGrid, int& numTaken, int& numPaired, float& symmetryScore) {
@@ -84,5 +65,4 @@ void cleanUpCellGrid(const std::shared_ptr<CellGrid>& cellGrid, int& numTaken, i
     numTaken = 0;
     numPaired = 0;
     symmetryScore = 0;
-    std::cout << "CellGrid cleaned up." << std::endl;
 }

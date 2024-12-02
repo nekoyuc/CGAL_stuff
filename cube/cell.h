@@ -1,4 +1,5 @@
 #pragma once
+#include "geometry.h"
 
 class Cell {
 public:
@@ -23,3 +24,5 @@ private:
     int m_y = 0;
     int m_z = 0;
 };
+
+std::shared_ptr<CellGrid> createCellGrid(const Point& min, const Point& max, const float& dx, const float& dy, const float& dz);

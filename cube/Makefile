@@ -156,6 +156,32 @@ is_symmetrical/fast:
 .PHONY : is_symmetrical/fast
 
 #=============================================================================
+# Target rules for targets named test
+
+# Build rule for target.
+test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
+.PHONY : test/fast
+
+#=============================================================================
+# Target rules for targets named simulated_annealing_symmetry
+
+# Build rule for target.
+simulated_annealing_symmetry: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 simulated_annealing_symmetry
+.PHONY : simulated_annealing_symmetry
+
+# fast build rule for target.
+simulated_annealing_symmetry/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/build
+.PHONY : simulated_annealing_symmetry/fast
+
+#=============================================================================
 # Target rules for targets named CGAL_Qt6_moc_and_resources_autogen
 
 # Build rule for target.
@@ -198,6 +224,7 @@ cell.o: cell.cpp.o
 # target to build an object file
 cell.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/cell.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/cell.cpp.o
 .PHONY : cell.cpp.o
 
 cell.i: cell.cpp.i
@@ -206,6 +233,7 @@ cell.i: cell.cpp.i
 # target to preprocess a source file
 cell.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/cell.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/cell.cpp.i
 .PHONY : cell.cpp.i
 
 cell.s: cell.cpp.s
@@ -214,6 +242,7 @@ cell.s: cell.cpp.s
 # target to generate assembly for a file
 cell.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/cell.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/cell.cpp.s
 .PHONY : cell.cpp.s
 
 cube.o: cube.cpp.o
@@ -246,6 +275,7 @@ file_processors.o: file_processors.cpp.o
 # target to build an object file
 file_processors.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/file_processors.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/file_processors.cpp.o
 .PHONY : file_processors.cpp.o
 
 file_processors.i: file_processors.cpp.i
@@ -254,6 +284,7 @@ file_processors.i: file_processors.cpp.i
 # target to preprocess a source file
 file_processors.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/file_processors.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/file_processors.cpp.i
 .PHONY : file_processors.cpp.i
 
 file_processors.s: file_processors.cpp.s
@@ -262,6 +293,7 @@ file_processors.s: file_processors.cpp.s
 # target to generate assembly for a file
 file_processors.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/file_processors.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/file_processors.cpp.s
 .PHONY : file_processors.cpp.s
 
 geometry.o: geometry.cpp.o
@@ -270,6 +302,8 @@ geometry.o: geometry.cpp.o
 # target to build an object file
 geometry.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/geometry.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/geometry.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/geometry.cpp.o
 .PHONY : geometry.cpp.o
 
 geometry.i: geometry.cpp.i
@@ -278,6 +312,8 @@ geometry.i: geometry.cpp.i
 # target to preprocess a source file
 geometry.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/geometry.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/geometry.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/geometry.cpp.i
 .PHONY : geometry.cpp.i
 
 geometry.s: geometry.cpp.s
@@ -286,6 +322,8 @@ geometry.s: geometry.cpp.s
 # target to generate assembly for a file
 geometry.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/geometry.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/geometry.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/geometry.cpp.s
 .PHONY : geometry.cpp.s
 
 is_symmetrical.o: is_symmetrical.cpp.o
@@ -318,6 +356,7 @@ operations.o: operations.cpp.o
 # target to build an object file
 operations.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/operations.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/operations.cpp.o
 .PHONY : operations.cpp.o
 
 operations.i: operations.cpp.i
@@ -326,6 +365,7 @@ operations.i: operations.cpp.i
 # target to preprocess a source file
 operations.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/operations.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/operations.cpp.i
 .PHONY : operations.cpp.i
 
 operations.s: operations.cpp.s
@@ -334,6 +374,7 @@ operations.s: operations.cpp.s
 # target to generate assembly for a file
 operations.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/operations.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/operations.cpp.s
 .PHONY : operations.cpp.s
 
 qrc_CGAL.o: qrc_CGAL.cpp.o
@@ -438,6 +479,7 @@ sdl_test.o: sdl_test.cpp.o
 # target to build an object file
 sdl_test.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/sdl_test.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/sdl_test.cpp.o
 .PHONY : sdl_test.cpp.o
 
 sdl_test.i: sdl_test.cpp.i
@@ -446,6 +488,7 @@ sdl_test.i: sdl_test.cpp.i
 # target to preprocess a source file
 sdl_test.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/sdl_test.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/sdl_test.cpp.i
 .PHONY : sdl_test.cpp.i
 
 sdl_test.s: sdl_test.cpp.s
@@ -454,7 +497,56 @@ sdl_test.s: sdl_test.cpp.s
 # target to generate assembly for a file
 sdl_test.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/is_symmetrical.dir/build.make CMakeFiles/is_symmetrical.dir/sdl_test.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/sdl_test.cpp.s
 .PHONY : sdl_test.cpp.s
+
+simulated_annealing_symmetry.o: simulated_annealing_symmetry.cpp.o
+.PHONY : simulated_annealing_symmetry.o
+
+# target to build an object file
+simulated_annealing_symmetry.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/simulated_annealing_symmetry.cpp.o
+.PHONY : simulated_annealing_symmetry.cpp.o
+
+simulated_annealing_symmetry.i: simulated_annealing_symmetry.cpp.i
+.PHONY : simulated_annealing_symmetry.i
+
+# target to preprocess a source file
+simulated_annealing_symmetry.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/simulated_annealing_symmetry.cpp.i
+.PHONY : simulated_annealing_symmetry.cpp.i
+
+simulated_annealing_symmetry.s: simulated_annealing_symmetry.cpp.s
+.PHONY : simulated_annealing_symmetry.s
+
+# target to generate assembly for a file
+simulated_annealing_symmetry.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simulated_annealing_symmetry.dir/build.make CMakeFiles/simulated_annealing_symmetry.dir/simulated_annealing_symmetry.cpp.s
+.PHONY : simulated_annealing_symmetry.cpp.s
+
+test.o: test.cpp.o
+.PHONY : test.o
+
+# target to build an object file
+test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cpp.o
+.PHONY : test.cpp.o
+
+test.i: test.cpp.i
+.PHONY : test.i
+
+# target to preprocess a source file
+test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cpp.i
+.PHONY : test.cpp.i
+
+test.s: test.cpp.s
+.PHONY : test.s
+
+# target to generate assembly for a file
+test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/test.cpp.s
+.PHONY : test.cpp.s
 
 # Help Target
 help:
@@ -468,6 +560,8 @@ help:
 	@echo "... CGAL_Qt6_moc_and_resources"
 	@echo "... cube"
 	@echo "... is_symmetrical"
+	@echo "... simulated_annealing_symmetry"
+	@echo "... test"
 	@echo "... CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.o"
 	@echo "... CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.i"
 	@echo "... CGAL_Qt6_moc_and_resources_autogen/mocs_compilation.s"
@@ -504,6 +598,12 @@ help:
 	@echo "... sdl_test.o"
 	@echo "... sdl_test.i"
 	@echo "... sdl_test.s"
+	@echo "... simulated_annealing_symmetry.o"
+	@echo "... simulated_annealing_symmetry.i"
+	@echo "... simulated_annealing_symmetry.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 .PHONY : help
 
 

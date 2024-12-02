@@ -345,6 +345,9 @@ MPFR_LIBRARIES:FILEPATH=/opt/homebrew/lib/libmpfr.dylib
 
 MPFR_LIBRARIES_DIR:FILEPATH=/opt/homebrew/lib
 
+//The directory containing a CMake configuration file for Matplot++.
+Matplot++_DIR:PATH=/opt/homebrew/lib/cmake/Matplot++
+
 //Include for the OpenGL GLU library
 OPENGL_GLU_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/System/Library/Frameworks/OpenGL.framework
 

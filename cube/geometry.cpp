@@ -5,7 +5,6 @@ Point::Point(float x, float y, float z){
             m_y = y;
             m_z = z;
         }
-
 Point::~Point() {} //Can this be deleted?
 
 Mesh::Mesh(int reserveSize) : m_boundingCenter(0,0,0) { //constructor
@@ -14,7 +13,6 @@ Mesh::Mesh(int reserveSize) : m_boundingCenter(0,0,0) { //constructor
             m_boundingBox.push_back(Point(0,0,0));
             m_boundingBox.push_back(Point(0,0,0));
         }
-
 Mesh::~Mesh() {} // Can this be deleted?
 
 void Mesh::addPoint(Point& p) {
@@ -27,7 +25,6 @@ Plane3P::Plane3P(Point& p1, Point& p2, Point& p3) : m_normal(0, 0, 0) { //why do
             m_points.push_back(p3);
             calculateNormal(m_points[0], m_points[1], m_points[2], m_normal);    
         }
-
 Plane3P::~Plane3P() {} // Can this be deleted?
 
 void Plane3P::calculateNormal(Point& p1, Point& p2, Point& p3, Point& normal) {
@@ -50,12 +47,11 @@ void Plane3P::calculateNormal(Point& p1, Point& p2, Point& p3, Point& normal) {
             normal.m_z = w_z / w_length;
         }
 
-PlaneNormal::PlaneNormal(Point &coordinate, Point &normal) : m_coordinate(0, 0, 0), m_normal(0, 0, 0) {
-            m_coordinate = coordinate;
-            m_normal = normal;
+PlaneNormal::PlaneNormal(Point& coordinate, Point& normal) : m_coordinate(0, 0, 0), m_normal(0, 0, 0) {
+            m_coordinate = coordinate; // values of coordinate are copied to m_coordinate
+            m_normal = normal; // values of normal are copied to m_normal
             calculateNormal(m_normal);
         }
-
 PlaneNormal::~PlaneNormal(){} // Can this be delted?
 
 void PlaneNormal::calculateNormal(Point& normal) {
@@ -64,3 +60,13 @@ void PlaneNormal::calculateNormal(Point& normal) {
             normal.m_y = normal.m_y / normalLength;
             normal.m_z = normal.m_z / normalLength;
         }
+
+void reconstructPlaneNormalByDistance(const Point& origin, const Point& distance, PlaneNormal& plane) {
+    plane.m_coordinate.m_x = origin.m_x + distance.m_x;
+    plane.m_coordinate.m_y = origin.m_y + distance.m_y;
+    plane.m_coordinate.m_z = origin.m_z + distance.m_z;
+    float normalLength = sqrt(distance.m_x * distance.m_x + distance.m_y * distance.m_y + distance.m_z * distance.m_z);
+    plane.m_normal.m_x = distance.m_x / normalLength;
+    plane.m_normal.m_y = distance.m_y / normalLength;
+    plane.m_normal.m_z = distance.m_z / normalLength;
+}

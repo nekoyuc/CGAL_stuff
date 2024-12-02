@@ -633,7 +633,11 @@
 		"/opt/homebrew/share/cmake/Modules/FeatureSummary.cmake",
 		"/opt/homebrew/share/glm/glmConfigVersion.cmake",
 		"/opt/homebrew/share/glm/glmConfig.cmake",
-		"/opt/homebrew/share/glm/glmConfig-release.cmake"
+		"/opt/homebrew/share/glm/glmConfig-release.cmake",
+		"/opt/homebrew/lib/cmake/Matplot++/Matplot++ConfigVersion.cmake",
+		"/opt/homebrew/lib/cmake/Matplot++/Matplot++Config.cmake",
+		"/opt/homebrew/lib/cmake/Matplot++/Matplot++Targets.cmake",
+		"/opt/homebrew/lib/cmake/Matplot++/Matplot++Targets-release.cmake"
 	],
 	"CMAKE_SOURCE_DIR" : "/Users/nekoyuc/src/CGAL_stuff/cube",
 	"CROSS_CONFIG" : false,
@@ -735,6 +739,7 @@
 		"/Users/nekoyuc/src/CGAL_stuff/cube/is_symmetrical",
 		"/opt/homebrew/Cellar/sdl2/2.30.9/include",
 		"/opt/homebrew/Cellar/sdl2/2.30.9/include/SDL2",
+		"/Users/nekoyuc/src/CGAL_stuff/cube/simulated_annealing_symmetry",
 		"/opt/homebrew/include",
 		"/opt/homebrew/lib/QtWidgets.framework/Headers",
 		"/opt/homebrew/lib/QtWidgets.framework",

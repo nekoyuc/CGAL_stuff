@@ -1918,6 +1918,10 @@ CGAL_Qt6_moc_and_resources_autogen/timestamp: /Library/Developer/CommandLineTool
   /opt/homebrew/lib/cmake/CGAL/FindGMP.cmake \
   /opt/homebrew/lib/cmake/CGAL/FindGMPXX.cmake \
   /opt/homebrew/lib/cmake/CGAL/FindMPFR.cmake \
+  /opt/homebrew/lib/cmake/Matplot++/Matplot++Config.cmake \
+  /opt/homebrew/lib/cmake/Matplot++/Matplot++ConfigVersion.cmake \
+  /opt/homebrew/lib/cmake/Matplot++/Matplot++Targets-release.cmake \
+  /opt/homebrew/lib/cmake/Matplot++/Matplot++Targets.cmake \
   /opt/homebrew/lib/cmake/Qt6/Qt6Config.cmake \
   /opt/homebrew/lib/cmake/Qt6/Qt6ConfigExtras.cmake \
   /opt/homebrew/lib/cmake/Qt6/Qt6ConfigVersion.cmake \
@@ -4752,6 +4756,8 @@ qrc_CGAL.cpp:
 
 /opt/homebrew/lib/QtCore.framework/Headers/qdiriterator.h:
 
+/opt/homebrew/lib/QtCore.framework/Headers/qcryptographichash.h:
+
 /opt/homebrew/lib/QtCore.framework/Headers/qcoreapplication.h:
 
 /opt/homebrew/lib/QtCore.framework/Headers/qcontainerfwd.h:
@@ -5438,10 +5444,6 @@ qrc_CGAL.cpp:
 
 /opt/homebrew/include/QtWidgets/QApplication:
 
-/opt/homebrew/Cellar/boost/1.86.0_2/include/boost/format/detail/msvc_disambiguater.hpp:
-
-/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h:
-
 /opt/homebrew/include/QtSvg/qtsvgexports.h:
 
 /opt/homebrew/include/QtOpenGLWidgets/qtopenglwidgetsglobal.h:
@@ -5935,10 +5937,6 @@ CGAL_Qt6_moc_and_resources_autogen/5XEOVZY5EI/moc_camera.cpp:
 /opt/homebrew/include/QtWidgets/qabstractitemdelegate.h:
 
 CGAL_Qt6_moc_and_resources_autogen/5XEOVZY5EI/moc_GraphicsViewNavigation.cpp:
-
-/opt/homebrew/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersionImpl.cmake:
-
-/opt/homebrew/lib/QtCore.framework/Headers/qdarwinhelpers.h:
 
 /opt/homebrew/Cellar/qt/6.7.3/lib/QtWidgets.framework/Versions/A/Headers/QVBoxLayout:
 
@@ -6761,6 +6759,12 @@ CGAL_Qt6_moc_and_resources_autogen/5XEOVZY5EI/moc_DemosMainWindow.cpp:
 /opt/homebrew/lib/cmake/Qt6/Qt6Dependencies.cmake:
 
 /opt/homebrew/lib/cmake/Qt6/Qt6ConfigVersion.cmake:
+
+/opt/homebrew/lib/cmake/Matplot++/Matplot++Targets.cmake:
+
+/opt/homebrew/lib/cmake/Matplot++/Matplot++Targets-release.cmake:
+
+/opt/homebrew/lib/cmake/Matplot++/Matplot++Config.cmake:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__random/seed_seq.h:
 
@@ -8668,6 +8672,10 @@ CMakeLists.txt:
 
 /opt/homebrew/Cellar/boost/1.86.0_2/include/boost/format/detail/unset_macros.hpp:
 
+/opt/homebrew/lib/QtCore.framework/Headers/qdatetime.h:
+
+/opt/homebrew/Cellar/boost/1.86.0_2/include/boost/format/detail/msvc_disambiguater.hpp:
+
 /opt/homebrew/Cellar/boost/1.86.0_2/include/boost/format/detail/config_macros.hpp:
 
 /opt/homebrew/Cellar/boost/1.86.0_2/include/boost/format.hpp:
@@ -9297,6 +9305,8 @@ icons/Input.qrc:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__type_traits/remove_all_extents.h:
 
 /opt/homebrew/Cellar/qt/6.7.3/lib/QtCore.framework/Versions/A/Headers/QPoint:
+
+/opt/homebrew/lib/cmake/Matplot++/Matplot++ConfigVersion.cmake:
 
 /opt/homebrew/Cellar/qt/6.7.3/lib/QtGui.framework/Versions/A/Headers/qpolygon.h:
 
@@ -9949,8 +9959,6 @@ icons/Triangulation_2.qrc:
 /opt/homebrew/Cellar/qt/6.7.3/lib/QtCore.framework/Versions/A/Headers/qtipccommon.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__memory/assume_aligned.h:
-
-/opt/homebrew/lib/QtCore.framework/Headers/qcryptographichash.h:
 
 /opt/homebrew/Cellar/boost/1.86.0_2/include/boost/predef/os/bsd/free.h:
 
@@ -10642,6 +10650,10 @@ icons/Triangulation_2.qrc:
 
 /opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake:
 
+/opt/homebrew/lib/QtCore.framework/Headers/qdarwinhelpers.h:
+
+/opt/homebrew/lib/cmake/Qt6OpenGL/Qt6OpenGLConfigVersionImpl.cmake:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/fill_n.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/inplace_merge.h:
@@ -10713,12 +10725,6 @@ icons/Triangulation_2.qrc:
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__assertion_handler:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__utility/forward.h:
-
-/opt/homebrew/lib/cmake/Qt6Gui/Qt6QPdfPluginTargets-release.cmake:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__chrono/statically_widen.h:
-
-/opt/homebrew/lib/QtCore.framework/Headers/qdatastream.h:
 
 /opt/homebrew/include/QtCore/qfile.h:
 
@@ -10923,6 +10929,12 @@ icons/Triangulation_2.qrc:
 /opt/homebrew/include/QtCore/qlatin1stringmatcher.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__algorithm/ranges_partial_sort.h:
+
+/opt/homebrew/lib/QtCore.framework/Headers/qdatastream.h:
+
+/opt/homebrew/lib/cmake/Qt6Gui/Qt6QPdfPluginTargets-release.cmake:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.1.sdk/usr/include/c++/v1/__chrono/statically_widen.h:
 
 /opt/homebrew/include/QtWidgets/qtwidgets-config.h:
 

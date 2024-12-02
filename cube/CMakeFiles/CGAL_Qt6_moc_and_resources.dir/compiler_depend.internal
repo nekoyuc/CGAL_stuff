@@ -1919,6 +1919,10 @@
  /opt/homebrew/lib/cmake/CGAL/FindGMP.cmake
  /opt/homebrew/lib/cmake/CGAL/FindGMPXX.cmake
  /opt/homebrew/lib/cmake/CGAL/FindMPFR.cmake
+ /opt/homebrew/lib/cmake/Matplot++/Matplot++Config.cmake
+ /opt/homebrew/lib/cmake/Matplot++/Matplot++ConfigVersion.cmake
+ /opt/homebrew/lib/cmake/Matplot++/Matplot++Targets-release.cmake
+ /opt/homebrew/lib/cmake/Matplot++/Matplot++Targets.cmake
  /opt/homebrew/lib/cmake/Qt6/Qt6Config.cmake
  /opt/homebrew/lib/cmake/Qt6/Qt6ConfigExtras.cmake
  /opt/homebrew/lib/cmake/Qt6/Qt6ConfigVersion.cmake

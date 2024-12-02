@@ -44,3 +44,6 @@ class PlaneNormal{
 
         void calculateNormal(Point& normal);
 };
+
+void reconstructPlaneNormalByDistance(
+    const Point& origin, const Point& distance, PlaneNormal& plane);
