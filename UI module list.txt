@@ -1,3 +1,4 @@
+***MODULES***
 - parts
     - material
     - connector
@@ -27,3 +28,48 @@ Modules that can manipulate the geometry of parts.
 
 [the painter's tools]
 Modules that can manipulate the colors and textures of the parts.
+
+***IDEATION***
+...image to 3D... on a surface. table... wall art...
+
+
+***bran storming***
+what is a table?
+a table is essentially a flat surface that is ~30" tall, and some negative space below it at perimeter that is at least ~24" tall and ~18" deep
+
+what to optimize?
+efficiency - material, process
+beauty
+story??
+
+what are the basic units?
+- material
+- form
+- function
+- 
+
+how is knowledge enriched, mind inspired, exploration supported? what is the invisible human skill that comes through this "crafting" experience?
+- "small tools, libraries" that can be easily plugged into bigger schemes
+- dexterity with hands
+- dexterity with brian
+
+what pain points do modn target?
+- dreary learning process
+- repetitive tasks
+- fine tunning duration
+- deposition cost
+- iteration cost
+- transportation cost and time
+- compliance with safety, health and environmental regulations
+
+what kind of feeling does it evoke?
+- warm
+- fun
+- social...
+- natural
+- smells good...
+- like a game (quick reward)
+- flow state
+- freedom
+- light punishment
+- easy to participate, flexible scope
