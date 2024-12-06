@@ -19,8 +19,10 @@ class Canvas{
         void getLayerHeight();
         void getCellNum();
 
-        void getCellSize();
+        float getCellWidth();
+        float getCellHeight();
         void setCell(int x, int y, int value);
+        int getCellValue(int x, int y);
         void getTopoGrid(); // This function is for testing purposes only
     
     private:

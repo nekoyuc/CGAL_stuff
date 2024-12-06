@@ -39,13 +39,20 @@ void Canvas::getCellNum() {
     std::cout << "Cell numbers in y: " << m_height_cell_num << std::endl;
 }
 
-void Canvas::getCellSize() {
-    std::cout << "Cell width: " << m_cell_witdh << std::endl;
-    std::cout << "Cell height: " << m_cell_height << std::endl;
+float Canvas::getCellWidth() {
+    return m_cell_witdh;
+}
+
+float Canvas::getCellHeight() {
+    return m_cell_height;
 }
 
 void Canvas::setCell(int x, int y, int value) {
     m_topo_grid[y * m_width_cell_num + x] = value;
+}
+
+int Canvas::getCellValue(int x, int y) {
+    return m_topo_grid[y * m_width_cell_num + x];
 }
 
 // This function is for testing purposes only
